@@ -1,0 +1,15 @@
+@import '~@angular/material/core/theming/all-theme';
+// Plus imports for other components in your app.
+
+// Include the base styles for Angular Material core. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+@include mat-core();
+
+$fit-kbtu-app-primary: mat-palette($mat-indigo);
+$fit-kbtu-app-accent:  mat-palette($mat-orange);
+$fit-kbtu-app-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$fit-kbtu-app-theme: mat-light-theme($fit-kbtu-app-primary, $fit-kbtu-app-accent, $fit-kbtu-app-warn);
+
+@include angular-material-theme($fit-kbtu-app-theme);
