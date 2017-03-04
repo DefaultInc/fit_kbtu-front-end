@@ -13,3 +13,9 @@ $fit-kbtu-app-warn:    mat-palette($mat-red);
 $fit-kbtu-app-theme: mat-light-theme($fit-kbtu-app-primary, $fit-kbtu-app-accent, $fit-kbtu-app-warn);
 
 @include angular-material-theme($fit-kbtu-app-theme);
+
+
+// Remove 8px margin from <body>
+body {
+  margin: 0
+}
