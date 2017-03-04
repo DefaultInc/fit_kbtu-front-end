@@ -1,8 +1,31 @@
-<md-toolbar color="primary">
-  <span>Faculty of Information Technology</span>
-  <span class="toolbar-spacer"></span>
-  <div class="button-row">
-    <button md-button> SIGN UP </button>
-    <button md-button> LOG IN </button>  
-  </div>
-</md-toolbar>
+<md-sidenav-container>
+
+  <md-toolbar color="primary">
+
+    <button md-icon-button class="menu-button-margin" (click)="sidenav.toggle()">
+    <md-icon>menu</md-icon>
+  </button>
+    <span>Faculty of Information Technology</span>
+    <span class="toolbar-spacer"></span>
+    <div class="button-row">
+      <button md-button> SIGN UP </button>
+      <button md-button> LOG IN </button>
+    </div>
+  </md-toolbar>
+  
+  <md-sidenav #sidenav mode="over" opened="false">
+   <md-toolbar color="primary">
+     <span>Menu</span>
+   </md-toolbar>
+   
+    <md-nav-list>
+      <h3 md-subheader>Information</h3>
+      <a md-list-item> News </a>
+      <a md-list-item> About ThinkIT </a>
+      <md-divider></md-divider>
+      <h3 md-subheader>Tools</h3>
+      <a md-list-item> Class registration </a>
+      <a md-list-item> Documents to Print </a>
+    </md-nav-list>
+  </md-sidenav>
+</md-sidenav-container>

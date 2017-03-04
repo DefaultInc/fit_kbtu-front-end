@@ -8,6 +8,10 @@ button-row {
   justify-content: space-around;
 }
 
+.menu-button-margin {
+  margin-right: 16px
+}
+
 .toolbar-spacer {
   flex: 1 1 auto;
 }
