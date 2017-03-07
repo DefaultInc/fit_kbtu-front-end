@@ -6,11 +6,13 @@ import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { FkNavbarComponent } from './components/fk-navbar/fk-navbar.component';
+import { FkSidenavComponent } from './components/fk-sidenav/fk-sidenav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FkNavbarComponent
+    FkNavbarComponent,
+    FkSidenavComponent
   ],
   imports: [
     BrowserModule,

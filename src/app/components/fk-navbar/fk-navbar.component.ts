@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-fk-navbar',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FkNavbarComponent implements OnInit {
 
+  @Output() toggleMenuButton = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleMenu() {
+    this.toggleMenuButton.emit();
   }
 
 }
