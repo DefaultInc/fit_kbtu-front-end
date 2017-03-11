@@ -11,7 +11,7 @@ import { FkSidenavComponent } from './components/fk-sidenav/fk-sidenav.component
 import { FkNewsCardComponent } from './components/fk-news-card/fk-news-card.component';
 
 import { FkLoginComponent, FkSignupComponent } from './components/fk-auth/fk-auth.component';
-import { PostService } from './components/fk-news-card/post.service';
+import { PostService } from './services/post.service';
 import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
