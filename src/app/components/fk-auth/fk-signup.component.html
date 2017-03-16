@@ -1,0 +1,23 @@
+<h1 md-dialog-title> Register to FIT </h1>
+<div MdDialogContent class="dialog-content">
+  <md-input-container class="full-width">
+    <input mdInput type="email" placeholder="Email">
+  </md-input-container>
+  <md-input-container class="full-width">
+    <input mdInput placeholder="First Name">
+  </md-input-container>
+  <md-input-container class="full-width">
+    <input mdInput placeholder="Last Name">
+  </md-input-container>
+  <md-input-container class="full-width">
+    <input mdInput type="password" placeholder="Password">
+  </md-input-container>
+  <md-input-container class="full-width">
+    <input mdInput type="password" placeholder="Confirm Password">
+  </md-input-container>
+</div>
+
+<div MdDialogActions class="action_container">
+  <button md-button tabindex="-1" (click)="closeDialog()"> CANCEL </button>
+  <button md-button> SIGN UP </button>
+</div>
