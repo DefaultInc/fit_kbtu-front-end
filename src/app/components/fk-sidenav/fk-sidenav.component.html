@@ -13,6 +13,8 @@
     </md-nav-list>
   </md-sidenav>
   
-  <app-fk-navbar (toggleMenuButton)="sidenav.toggle()"></app-fk-navbar>
-  <app-fk-news-card style="overflow: auto;"> </app-fk-news-card>
+  <div class="wrapper">
+    <app-fk-navbar (toggleMenuButton)="sidenav.toggle()"></app-fk-navbar>
+    <app-fk-news-card style="overflow: auto;"> </app-fk-news-card>
+  </div>
 </md-sidenav-container>

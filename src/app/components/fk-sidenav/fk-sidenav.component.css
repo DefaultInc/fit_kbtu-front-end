@@ -1,0 +1,15 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;            
+  height: 100vh;
+  overflow: hidden;
+}
+
+app-fk-navbar{
+  flex: 0 0 auto;  
+}
+
+app-fk-news-card {
+  flex: 2 2 auto;     
+  overflow-y: auto;     
+}

@@ -2,7 +2,7 @@
     <md-card *ngFor="let post of posts">
       <md-card-title> {{ post.title }} </md-card-title>
       <md-card-subtitle> 
-        Published by NurlashKO
+        Published by {{ post.author }}
       </md-card-subtitle>
       <md-card-content> {{ post.short_description }} </md-card-content>
       <a href="" md-button color="accent"> READ MORE</a>
