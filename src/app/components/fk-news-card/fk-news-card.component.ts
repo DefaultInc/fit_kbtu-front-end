@@ -12,11 +12,11 @@ import { PostService } from '../../services/post.service';
 export class FkNewsCardComponent implements OnInit {
 
   posts: Post[];
-
   constructor(private postService: PostService) { }
 
   getPosts() {
-    this.postService.getPosts().then(posts => this.posts = posts);
+    this.postService.getPosts().subscribe(
+    posts => this.posts = posts);
   }
 
   ngOnInit() {

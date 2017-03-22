@@ -5,15 +5,15 @@
 // have to load a single css file for Angular Material in your app.
 @include mat-core();
 
-$fit-kbtu-app-primary: mat-palette($mat-indigo);
-$fit-kbtu-app-accent:  mat-palette($mat-orange);
+$fit-kbtu-app-primary: mat-palette($mat-purple);
+$fit-kbtu-app-accent:  mat-palette($mat-deep-orange);
 $fit-kbtu-app-warn:    mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $fit-kbtu-app-theme: mat-light-theme($fit-kbtu-app-primary, $fit-kbtu-app-accent, $fit-kbtu-app-warn);
 
 @include angular-material-theme($fit-kbtu-app-theme);
-
+//@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
 
 // Remove 8px margin from <body>
 html, body, material-app, md-sidenav-container, .my-content {
