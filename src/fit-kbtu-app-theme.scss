@@ -13,7 +13,6 @@ $fit-kbtu-app-warn:    mat-palette($mat-red);
 $fit-kbtu-app-theme: mat-light-theme($fit-kbtu-app-primary, $fit-kbtu-app-accent, $fit-kbtu-app-warn);
 
 @include angular-material-theme($fit-kbtu-app-theme);
-//@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
 
 // Remove 8px margin from <body>
 html, body, material-app, md-sidenav-container, .my-content {
