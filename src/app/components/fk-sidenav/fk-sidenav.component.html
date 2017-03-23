@@ -1,13 +1,9 @@
+  <div class="wrapper">
+    <app-fk-navbar (toggleMenuButton)="sidenav.toggle()"></app-fk-navbar>
 <md-sidenav-container>
 
-  <app-fk-navbar (toggleMenuButton)="sidenav.toggle()"></app-fk-navbar>
-
-  <app-fk-news-card> </app-fk-news-card>
-
-  <md-sidenav #sidenav mode="over" opened="false">
-    <md-toolbar color="primary">
-      <span>Menu</span>
-    </md-toolbar>
+  <md-sidenav #sidenav mode="side" opened="true">
+    <img src="http://www.kbtu.kz/Content/Faculty/logo/fit.jpg" alt="" width="200" height = "200">
     <md-nav-list>
       <h3 md-subheader>Information</h3>
       <a md-list-item> News </a>
@@ -18,4 +14,7 @@
       <a md-list-item> Documents to Print </a>
     </md-nav-list>
   </md-sidenav>
+
+    <app-fk-news-card style="overflow: auto;"> </app-fk-news-card>
 </md-sidenav-container>
+  </div>
