@@ -1,3 +1,5 @@
+  <div class="wrapper">
+    <app-fk-navbar (toggleMenuButton)="sidenav.toggle()"></app-fk-navbar>
 <md-sidenav-container>
 
   <md-sidenav #sidenav mode="side" opened="true">
@@ -12,9 +14,7 @@
       <a md-list-item> Documents to Print </a>
     </md-nav-list>
   </md-sidenav>
-  
-  <div class="wrapper">
-    <app-fk-navbar (toggleMenuButton)="sidenav.toggle()"></app-fk-navbar>
+
     <app-fk-news-card style="overflow: auto;"> </app-fk-news-card>
-  </div>
 </md-sidenav-container>
+  </div>
