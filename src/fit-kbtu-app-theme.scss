@@ -5,7 +5,7 @@
 // have to load a single css file for Angular Material in your app.
 @include mat-core();
 
-$fit-kbtu-app-primary: mat-palette($mat-purple);
+$fit-kbtu-app-primary: mat-palette($mat-blue);
 $fit-kbtu-app-accent:  mat-palette($mat-deep-orange);
 $fit-kbtu-app-warn:    mat-palette($mat-red);
 
