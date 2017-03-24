@@ -6,7 +6,7 @@
     <img src="http://www.kbtu.kz/Content/Faculty/logo/fit.jpg" alt="" width="200" height = "200">
     <md-nav-list>
       <h3 md-subheader>Information</h3>
-      <a md-list-item> News </a>
+      <a md-list-item routerLink="/news" routerLinkActive="active"> News </a>
       <a md-list-item> About ThinkIT </a>
       <md-divider></md-divider>
       <h3 md-subheader>Tools</h3>
@@ -14,7 +14,6 @@
       <a md-list-item> Documents to Print </a>
     </md-nav-list>
   </md-sidenav>
-
-    <app-fk-news-card style="overflow: auto;"> </app-fk-news-card>
+    <router-outlet></router-outlet>
 </md-sidenav-container>
   </div>

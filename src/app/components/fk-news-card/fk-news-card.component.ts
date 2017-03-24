@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router }            from '@angular/router';
 
 import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
@@ -10,7 +9,7 @@ import { PostService } from '../../services/post.service';
   styleUrls: ['./fk-news-card.component.css']
 })
 export class FkNewsCardComponent implements OnInit {
-
+ 
   posts: Post[];
   constructor(private postService: PostService) { }
 

@@ -3,11 +3,11 @@
   <button md-icon-button class="menu-button-margin" (click)="toggleMenu()">
     <md-icon>menu</md-icon>
   </button>
-  <!-- TODO 
-    This part below should be dynamic and change depending on current page state.
-  -->
-  <span>FIT Portal &nbsp; </span> <md-icon>navigate_next</md-icon> <span>&nbsp; News</span>
-  
+  <button md-button routerLink="/" style="font-size: 18px;">FIT Portal </button>
+  <ng-container *ngFor="let navUrl of navigationPathDisplayString; let i = index">
+    <md-icon>navigate_next</md-icon> 
+    <button md-button routerLink="{{ navigationPath[i] }}">  {{ navUrl }}</button>
+  </ng-container>
   <span class="toolbar-spacer"></span>
   <div class="button-row">
     <button md-button (click)="openSignupDialog()"> SIGN UP </button>
