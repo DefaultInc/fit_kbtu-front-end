@@ -6,6 +6,8 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { MainPageModule } from './main-page/main-page.module';
+import { SidenavRoutingModule } from './components/fk-sidenav/fk-sidenav.routing';
 
 import { AppComponent } from './app.component';
 import { FkNavbarComponent } from './components/fk-navbar/fk-navbar.component';
@@ -13,10 +15,10 @@ import { FkSidenavComponent } from './components/fk-sidenav/fk-sidenav.component
 import { FkNewsCardComponent } from './components/fk-news-card/fk-news-card.component';
 import { FkNotFoundComponent } from './components/fk-not-found/fk-not-found.component';
 import { FkLoginComponent, FkSignupComponent } from './components/fk-auth/fk-auth.component';
+import { FkPostCardComponent } from './components/fk-post-card/fk-post-card.component';
 
 import { PostService } from './services/post.service';
 import { AuthenticationService } from './services/authentication.service';
-import { FkPostCardComponent } from './components/fk-post-card/fk-post-card.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { FkPostCardComponent } from './components/fk-post-card/fk-post-card.comp
     MaterialModule,
     FlexLayoutModule.forRoot(),
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MainPageModule,
+    SidenavRoutingModule
   ],
   entryComponents: [FkLoginComponent, FkSignupComponent],
   providers: [PostService, AuthenticationService],
