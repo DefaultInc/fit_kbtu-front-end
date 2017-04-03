@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 
@@ -13,8 +13,20 @@ export class AuthenticationService {
         this.token = currentUser && currentUser.token;
     }
 
+    isLoggedIn(): Boolean {
+        // TODO(nurlashko): Add check and token refresh if needed
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.token) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     login(email: string, password: string): Observable<boolean> {
-        return this.http.post('http://localhost:8000/api-auth/login/', JSON.stringify({ email: email, password: password }))
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post('http://localhost:8000/auth/login/', JSON.stringify({ username: email, password: password }), options)
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
@@ -24,7 +36,7 @@ export class AuthenticationService {
 
                     // store email and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify({ email: email, token: token }));
-
+                    location.reload();
                     // return true to indicate successful login
                     return true;
                 } else {
@@ -38,5 +50,6 @@ export class AuthenticationService {
         // clear token remove user from local storage to log user out
         this.token = null;
         localStorage.removeItem('currentUser');
+        location.reload();
     }
 }
