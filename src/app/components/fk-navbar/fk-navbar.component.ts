@@ -3,6 +3,7 @@ import { Router, NavigationStart } from '@angular/router';
 
 import { MdDialog } from '@angular/material';
 import { FkLoginComponent, FkSignupComponent } from '../fk-auth/fk-auth.component';
+import { AuthenticationService } from '../../services/authentication.service'
 
 @Component({
   selector: 'app-fk-navbar',
@@ -14,8 +15,11 @@ export class FkNavbarComponent implements OnInit {
   @Output() toggleMenuButton = new EventEmitter();
   navigationPathDisplayString: String[];
   navigationPath: String[];
+  loggedIn() {
+    return this.authService.isLoggedIn();
+  }
 
-  constructor(public dialog: MdDialog, router:Router) { 
+  constructor(public dialog: MdDialog, router:Router, public authService: AuthenticationService) { 
     router.events.subscribe(event => {
     if(event instanceof NavigationStart) {
       this.navigationPath = event.url.split("/").filter(url => url.length > 0);
@@ -28,9 +32,11 @@ export class FkNavbarComponent implements OnInit {
       }
     }
   });
+
   }
 
   ngOnInit() {
+    console.log(this.loggedIn());
   }
 
   openLoginDialog() {
@@ -39,6 +45,10 @@ export class FkNavbarComponent implements OnInit {
    
   openSignupDialog() {
     this.dialog.open(FkSignupComponent);
+  }
+
+  logout() {
+    this.authService.logout()
   }
 
   toggleMenu() {

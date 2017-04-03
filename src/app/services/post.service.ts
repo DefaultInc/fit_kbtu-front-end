@@ -1,4 +1,4 @@
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
@@ -14,7 +14,7 @@ export class PostService {
   constructor(private http: Http) {};
 
   getPosts(): Observable<Post[]> {
-    return this.http.get(this.PostsURL)
+    return this.http.get(this.PostsURL, this.jwt())
                     .map(this.extractData)
                     .catch(this.handleError);
   }
@@ -43,5 +43,14 @@ export class PostService {
     console.error(errMsg);
     return Observable.throw(errMsg);
   }
+
+  private jwt() {
+        // create authorization header with jwt token
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.token) {
+            let headers = new Headers({ 'Authorization': 'JWT ' + currentUser.token });
+            return new RequestOptions({ headers: headers });
+        }
+    }
 }
 
