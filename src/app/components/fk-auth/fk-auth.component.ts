@@ -46,12 +46,41 @@ export class FkLoginComponent implements OnInit {
 })
 export class FkSignupComponent implements OnInit {
 
-  constructor(public dialogRef: MdDialogRef<FkSignupComponent>) { }
+  model: any = {};
+  loading = false;
+  returnUrl: string;
+
+  constructor(private authenticationService: AuthenticationService,
+              public dialogRef: MdDialogRef<FkSignupComponent>) { }
   
   closeDialog() {
     this.dialogRef.close();  
   }
   
+  signUp() {
+      this.loading = true;
+      this.authenticationService.signUp(this.model.username, this.model.password)
+          .subscribe(
+              data => {
+                this.login();
+                this.closeDialog();
+              },
+              error => {
+                  this.loading = false;
+              });
+  }
+
+  private login() {
+      this.loading = true;
+      this.authenticationService.login(this.model.username, this.model.password)
+          .subscribe(
+              data => {
+              },
+              error => {
+                  this.loading = false;
+              });
+  }
+
   ngOnInit() {
   }
 
