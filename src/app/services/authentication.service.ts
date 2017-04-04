@@ -46,6 +46,20 @@ export class AuthenticationService {
             });
     }
 
+    signUp(email: string, password: string): Observable<boolean> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post('http://localhost:8000/auth/register/', JSON.stringify({ username: email, password: password }), options)
+            .map((response: Response) => {
+                if (response.status === 201) {
+                    return true;
+                } else {
+                    // return false to indicate failed login
+                    return false;
+                }
+            }); 
+    }
+
     logout(): void {
         // clear token remove user from local storage to log user out
         this.token = null;
