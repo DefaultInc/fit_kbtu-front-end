@@ -1,0 +1,11 @@
+<div class="head">
+    <span class="author">
+        {{comment.author.username}}
+    </span>
+    <span class="date">
+        {{comment.publish_date | date: 'dd/MM/yyyy'}}
+    </span>    
+</div>
+<div class="content">
+    {{comment.content}}
+</div>

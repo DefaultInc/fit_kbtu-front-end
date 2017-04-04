@@ -8,7 +8,7 @@ import { PostService } from '../../services/post.service';
 @Component({
   selector: 'app-fk-post-card',
   templateUrl: './fk-post-card.component.html',
-  styleUrls: ['./fk-post-card.component.css'],
+  styleUrls: ['./fk-post-card.component.scss'],
   animations: [ slideInDownAnimation ]
 
 })
