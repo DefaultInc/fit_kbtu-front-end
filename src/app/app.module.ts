@@ -19,6 +19,8 @@ import { FkPostCardComponent } from './components/fk-post-card/fk-post-card.comp
 
 import { PostService } from './services/post.service';
 import { AuthenticationService } from './services/authentication.service';
+import { CommentComponent } from './components/comment/comment.component';
+import { CommentFormComponent } from './components/comment-form/comment-form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { AuthenticationService } from './services/authentication.service';
     FkLoginComponent,
     FkSignupComponent,
     FkNotFoundComponent,
-    FkPostCardComponent
+    FkPostCardComponent,
+    CommentComponent,
+    CommentFormComponent
   ],
   imports: [
     BrowserModule,
