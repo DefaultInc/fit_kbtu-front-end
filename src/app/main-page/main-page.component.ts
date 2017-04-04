@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
+import {MdIconRegistry} from '@angular/material';
 
 @Component({
   selector: 'fp-main-page',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  headerImgPath: String
+
+  constructor(iconRegistry: MdIconRegistry, sanitizer: DomSanitizer) { 
+    this.headerImgPath = "/assets/header.jpg"
+    iconRegistry.addSvgIcon(
+        'github',
+        sanitizer.bypassSecurityTrustResourceUrl('../assets/github-circle.svg'));
+  }
 
   ngOnInit() {
   }
