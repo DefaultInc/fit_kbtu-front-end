@@ -1,0 +1,14 @@
+<form action="" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <div class="head">
+        <span>{{currentUser.email}}</span>        
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <textarea class="mdl-textfield__input" type="text" rows= "3" id="comment"></textarea>
+        <label class="mdl-textfield__label" for="comment">Comment</label>
+    </div>
+    <div class="buttons">
+        <button md-button type="submit">
+            Submit
+        </button>
+    </div>    
+</form>

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -43,6 +43,7 @@ import { CommentFormComponent } from './components/comment-form/comment-form.com
     HttpModule,
     AppRoutingModule,
     MainPageModule,
+    ReactiveFormsModule,
     SidenavRoutingModule
   ],
   entryComponents: [FkLoginComponent, FkSignupComponent],

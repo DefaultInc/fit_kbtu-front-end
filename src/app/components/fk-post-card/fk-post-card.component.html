@@ -7,6 +7,9 @@
       </md-card-subtitle>
       <md-card-content> {{ post.content }} </md-card-content>
     </md-card>
+    <div class="comment-form">
+      <fp-comment-form></fp-comment-form>
+    </div>
     <div class="comments">
       <span class="comments-title">Comments:</span>
       <div class="list" *ngFor="let comment of post.comments">
