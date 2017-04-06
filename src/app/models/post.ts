@@ -1,3 +1,5 @@
+import { IComment } from "./comment";
+
 export class Post {
   id: number;
   title: string;
@@ -5,4 +7,5 @@ export class Post {
   content: string;
   publish_date: string;
   author: string;
+  comments: IComment[];
 }
