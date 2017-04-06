@@ -12,15 +12,18 @@ import { AuthenticationService } from '../../services/authentication.service'
 })
 export class FkNavbarComponent implements OnInit {
 
-  @Output() toggleMenuButton = new EventEmitter();
+  menuToggled: Boolean = true;
   navigationPathDisplayString: String[];
   navigationPath: String[];
+  username: String;
+
   loggedIn() {
     return this.authService.isLoggedIn();
   }
 
   constructor(public dialog: MdDialog, router:Router, public authService: AuthenticationService) { 
     router.events.subscribe(event => {
+    
     if(event instanceof NavigationStart) {
       this.navigationPath = event.url.split("/").filter(url => url.length > 0);
       this.navigationPathDisplayString = this.navigationPath.map(url => url.charAt(0).toUpperCase() + url.slice(1));
@@ -30,6 +33,11 @@ export class FkNavbarComponent implements OnInit {
           this.navigationPath[i] = this.navigationPath[i - 1] + '/' + this.navigationPath[i];
         }
       }
+    }
+
+    if (this.authService.isLoggedIn()) {
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.username = currentUser.username
     }
   });
 
@@ -48,11 +56,11 @@ export class FkNavbarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout()
+    this.authService.logout();
   }
 
   toggleMenu() {
-    this.toggleMenuButton.emit();
+    this.menuToggled = !this.menuToggled;
   }
 
 }
