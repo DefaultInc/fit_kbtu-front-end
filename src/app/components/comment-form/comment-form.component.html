@@ -1,0 +1,16 @@
+
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="head">
+        <h4>Write Comment:</h4>
+        <!--<span>by {{currentUser.username}}</span>        -->
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label content">
+        <textarea class="mdl-textfield__input" type="text" rows="4" id="comment" formControlName="content"></textarea>
+        <label class="mdl-textfield__label" for="comment">Comment</label>
+    </div>
+    <div class="buttons">
+        <button md-button type="submit" color="primary">
+            Comment
+        </button>
+    </div>    
+</form>

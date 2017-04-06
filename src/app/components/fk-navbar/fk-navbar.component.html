@@ -1,0 +1,40 @@
+<md-toolbar color="primary">
+
+  <button md-icon-button class="menu-button-margin" (click)="toggleMenu()">
+    <md-icon>menu</md-icon>
+  </button>
+  <button md-button routerLink="/" style="font-size: 18px;">FIT Portal </button>
+  <ng-container *ngFor="let navUrl of navigationPathDisplayString; let i = index">
+    <md-icon>navigate_next</md-icon> 
+    <button md-button routerLink="{{ navigationPath[i] }}">  {{ navUrl }}</button>
+  </ng-container>
+  <span class="toolbar-spacer"></span>
+  <div *ngIf="!loggedIn()" class="button-row">
+    <button md-button (click)="openSignupDialog()"> SIGN UP </button>
+    <button md-button (click)="openLoginDialog()"> LOG IN </button>
+  </div>
+
+  <div *ngIf="loggedIn()" class="button-row">
+<button md-button [mdMenuTriggerFor]="menu">
+  Hi, {{ username }} <md-icon>keyboard_arrow_down</md-icon>
+</button>
+<md-menu #menu="mdMenu">
+  <button md-menu-item>
+    <md-icon>perm_identity</md-icon>
+    <span>My Profile</span>
+  </button>
+  <button md-menu-item>
+    <md-icon>settings</md-icon>
+    <span>Settings</span>
+  </button>
+  <md-divider></md-divider>
+  <button md-menu-item (click)="logout()">
+    <md-icon>exit_to_app</md-icon>
+    <span>Sign Out</span>
+  </button>
+</md-menu>
+  </div>
+  
+</md-toolbar>
+<router-outlet> </router-outlet>
+
