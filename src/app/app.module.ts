@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { MainPageModule } from './main-page/main-page.module';
@@ -12,10 +13,11 @@ import { SidenavRoutingModule } from './components/fk-sidenav/fk-sidenav.routing
 import { AppComponent } from './app.component';
 import { FkNavbarComponent } from './components/fk-navbar/fk-navbar.component';
 import { FkSidenavComponent } from './components/fk-sidenav/fk-sidenav.component';
-import { FkNewsCardComponent } from './components/fk-news-card/fk-news-card.component';
 import { FkNotFoundComponent } from './components/fk-not-found/fk-not-found.component';
 import { FkLoginComponent, FkSignupComponent } from './components/fk-auth/fk-auth.component';
 import { FkPostCardComponent } from './components/fk-post-card/fk-post-card.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { CommentFormComponent } from './components/comment-form/comment-form.component';
 
 import { PostService } from './services/post.service';
 import { AuthenticationService } from './services/authentication.service';
@@ -27,7 +29,6 @@ import { CommentFormComponent } from './components/comment-form/comment-form.com
     AppComponent,
     FkNavbarComponent,
     FkSidenavComponent,
-    FkNewsCardComponent,
     FkLoginComponent,
     FkSignupComponent,
     FkNotFoundComponent,

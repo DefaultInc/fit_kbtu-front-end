@@ -5,4 +5,3 @@ export interface IComment {
     author: User;
     publish_date: string;
     content: string;
-}

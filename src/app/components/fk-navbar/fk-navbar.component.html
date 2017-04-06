@@ -16,7 +16,7 @@
 
   <div *ngIf="loggedIn()" class="button-row">
 <button md-button [mdMenuTriggerFor]="menu">
-  Hi, NurlashKO <md-icon>keyboard_arrow_down</md-icon>
+  Hi, {{ username }} <md-icon>keyboard_arrow_down</md-icon>
 </button>
 <md-menu #menu="mdMenu">
   <button md-menu-item>
@@ -36,5 +36,5 @@
   </div>
   
 </md-toolbar>
-<router-outlet>
+<router-outlet> </router-outlet>
 

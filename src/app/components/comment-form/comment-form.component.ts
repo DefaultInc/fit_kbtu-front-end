@@ -1,6 +1,8 @@
+
+import { IComment } from "../../models/comment";
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { IComment } from "../../models/comment";
+
 
 @Component({
   selector: 'fp-comment-form',
@@ -29,6 +31,4 @@ export class CommentFormComponent implements OnInit {
       content: form.content,
       publish_date: new Date().toDateString()
     }
-  }
-
 }
