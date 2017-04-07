@@ -21,6 +21,7 @@ import { CommentFormComponent } from './components/comment-form/comment-form.com
 
 import { PostService } from './services/post.service';
 import { AuthenticationService } from './services/authentication.service';
+import { SharedService } from './services/shared.service';
 import { CommentService } from "./services/comment.service";
 
 @NgModule({
@@ -47,7 +48,8 @@ import { CommentService } from "./services/comment.service";
     SidenavRoutingModule
   ],
   entryComponents: [FkLoginComponent, FkSignupComponent],
-  providers: [PostService, AuthenticationService, CommentService],
+  providers: [PostService, AuthenticationService, SharedService, CommentService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

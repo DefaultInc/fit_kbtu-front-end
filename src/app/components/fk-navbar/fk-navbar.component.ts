@@ -4,6 +4,7 @@ import { Router, NavigationStart } from '@angular/router';
 import { MdDialog } from '@angular/material';
 import { FkLoginComponent, FkSignupComponent } from '../fk-auth/fk-auth.component';
 import { AuthenticationService } from '../../services/authentication.service'
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-fk-navbar',
@@ -21,7 +22,8 @@ export class FkNavbarComponent implements OnInit {
     return this.authService.isLoggedIn();
   }
 
-  constructor(public dialog: MdDialog, router:Router, public authService: AuthenticationService) { 
+  constructor(public dialog: MdDialog, router:Router, public authService: AuthenticationService,
+              private sharedService: SharedService) { 
     router.events.subscribe(event => {
     
     if(event instanceof NavigationStart) {
@@ -60,7 +62,7 @@ export class FkNavbarComponent implements OnInit {
   }
 
   toggleMenu() {
-    this.menuToggled = !this.menuToggled;
+    this.sharedService.toggleSidenav();
   }
 
 }
