@@ -15,7 +15,7 @@ export class FkNewsCardComponent implements OnInit {
 
   getPosts() {
     this.postService.getPosts().subscribe(
-    posts => this.posts = posts);
+  posts => this.posts = posts);
   }
 
   ngOnInit() {

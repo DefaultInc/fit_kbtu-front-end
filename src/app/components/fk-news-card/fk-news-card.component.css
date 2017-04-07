@@ -1,4 +1,8 @@
 .news-container {
   margin-top:30px;
   margin-bottom:30px;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  display:flex;
+  align-content: center;
 }
