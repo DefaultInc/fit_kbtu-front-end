@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -22,7 +22,7 @@ import { CommentFormComponent } from './components/comment-form/comment-form.com
 import { PostService } from './services/post.service';
 import { AuthenticationService } from './services/authentication.service';
 import { SharedService } from './services/shared.service';
-
+import { CommentService } from "./services/comment.service";
 
 @NgModule({
   declarations: [
@@ -44,10 +44,12 @@ import { SharedService } from './services/shared.service';
     HttpModule,
     AppRoutingModule,
     MainPageModule,
+    ReactiveFormsModule,
     SidenavRoutingModule
   ],
   entryComponents: [FkLoginComponent, FkSignupComponent],
-  providers: [PostService, AuthenticationService, SharedService],
+  providers: [PostService, AuthenticationService, SharedService, CommentService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
