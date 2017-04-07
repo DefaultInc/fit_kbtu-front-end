@@ -2,7 +2,7 @@
     <md-card style="width: 100%;">
       <md-card-title> {{ post.title }} </md-card-title>
       <md-card-subtitle> 
-        By {{ post.author }} | Date: {{ post.publish_date | date: 'd/MM/yyyy'}}
+        By {{ post.author.username }} | Date: {{ post.publish_date | date: 'd/MM/yyyy'}}
       </md-card-subtitle>
       <md-card-content> {{ post.content }} </md-card-content>
     </md-card>    
