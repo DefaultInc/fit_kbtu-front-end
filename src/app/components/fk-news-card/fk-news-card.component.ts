@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-fk-news-card',
@@ -11,30 +12,38 @@ import { PostService } from '../../services/post.service';
 export class FkNewsCardComponent implements OnInit {
  
   posts: Post[];
-  username: string;
+  user: User;
   constructor(private postService: PostService) { 
-    this.username = JSON.parse(localStorage.getItem('currentUser')).username
+    this.user = JSON.parse(localStorage.getItem('currentUser'))
   }
 
   getPosts() {
     this.postService.getPosts().subscribe(
-  posts => this.posts = posts);
+    posts => {
+      this.posts = posts;
+      this.posts.forEach(post => post.isLiked = this.postIsLiked(post));
+    })
   }
 
   ngOnInit() {
     this.getPosts();
   }
 
+  postIsLiked(post: Post): boolean {
+    return post.likes.find(like => like.author.username==this.user.username) != undefined
+  }
+
   likedPost(postID: number) {
-    let currentUser = JSON.parse(localStorage.getItem('currentUser')).username
-    let post = this.posts.find(post => post.id == postID)
-    var index = post.likes.indexOf(currentUser, 0);
-    if (index > -1) {
+    var post = this.posts.find(post => post.id == postID)
+    var like = post.likes.find(like => like.author.username==this.user.username);
+    if (like) {
       this.postService.postLiked(postID);
-      delete post.likes.splice(index, 1);
+      post.likes = post.likes.filter(like => like.author.username!=this.user.username);
+      post.isLiked = false;
     } else {
       this.postService.postLiked(postID);
-      post.likes.push(currentUser)
+      post.likes.push({'author': this.user})
+      post.isLiked = true;
     }
   }
 

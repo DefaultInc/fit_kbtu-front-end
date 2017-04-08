@@ -7,8 +7,8 @@
         <md-card-content> {{ post.short_description }} </md-card-content>
         <md-card-actions>
             <button (click)="likedPost(post.id)" md-ripple="white" md-button>
-          <md-icon *ngIf="post.likes.includes(username)" style="color: red">favorite</md-icon> 
-          <md-icon *ngIf="!post.likes.includes(username)">favorite</md-icon> 
+          <md-icon *ngIf="post.isLiked" style="color: red">favorite</md-icon> 
+          <md-icon *ngIf="!post.isLiked">favorite</md-icon> 
           {{ post.likes.length}}
 
       </button>
