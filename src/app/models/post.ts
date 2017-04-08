@@ -9,4 +9,5 @@ export class Post {
   publish_date: string;
   author: User;
   comments: IComment[];
+  likes: [User];
 }

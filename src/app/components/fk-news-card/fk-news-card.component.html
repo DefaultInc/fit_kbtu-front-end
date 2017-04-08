@@ -1,18 +1,17 @@
-
-  <div class="news-container">
+<div class="news-container">
     <md-card *ngFor="let post of posts, let i = index" [fxFlexOffset]="i%2 ? 4 : 10" fxFlex="38" style="margin-bottom: 30px">
-      <md-card-title> {{ post.title }} </md-card-title>
-      <md-card-subtitle> 
-        By {{ post.author.username }} | Date: {{ post.publish_date | date: 'd/MM/yyyy'}}
-      </md-card-subtitle>
-      <md-card-content> {{ post.short_description }} </md-card-content>
-      <md-card-actions>
-      <button md-button>
-          <md-icon>favorite</md-icon> 30
+        <md-card-title> {{ post.title }} </md-card-title>
+        <md-card-subtitle>
+            By {{ post.author.username }} | Date: {{ post.publish_date | date: 'd/MM/yyyy'}}
+        </md-card-subtitle>
+        <md-card-content> {{ post.short_description }} </md-card-content>
+        <md-card-actions>
+            <button md-button>
+          <md-icon color="red">favorite</md-icon> 30
       </button>
-      <button md-button>
+            <button md-button>
         <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="1"><md-icon>comments</md-icon></div></button>
-      <a style="float: right" routerLink ="/news/{{ post.id }}" md-button color="accent"> READ MORE</a>
-      </md-card-actions>
+            <a style="float: right" routerLink="/news/{{ post.id }}" md-button color="accent"> READ MORE</a>
+        </md-card-actions>
     </md-card>
-  </div>
+</div>
