@@ -6,11 +6,14 @@
         </md-card-subtitle>
         <md-card-content> {{ post.short_description }} </md-card-content>
         <md-card-actions>
-            <button md-button>
-          <md-icon color="red">favorite</md-icon> 30
+            <button (click)="likedPost(post.id)" md-ripple="white" md-button>
+          <md-icon *ngIf="post.likes.includes(username)" style="color: red">favorite</md-icon> 
+          <md-icon *ngIf="!post.likes.includes(username)">favorite</md-icon> 
+          {{ post.likes.length}}
+
       </button>
             <button md-button>
-        <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="1"><md-icon>comments</md-icon></div></button>
+        <div class="material-icons mdl-badge mdl-badge--overlap" attr.data-badge="{{ post.comments.length }}"><md-icon>comments</md-icon></div></button>
             <a style="float: right" routerLink="/news/{{ post.id }}" md-button color="accent"> READ MORE</a>
         </md-card-actions>
     </md-card>

@@ -11,7 +11,10 @@ import { PostService } from '../../services/post.service';
 export class FkNewsCardComponent implements OnInit {
  
   posts: Post[];
-  constructor(private postService: PostService) { }
+  username: string;
+  constructor(private postService: PostService) { 
+    this.username = JSON.parse(localStorage.getItem('currentUser')).username
+  }
 
   getPosts() {
     this.postService.getPosts().subscribe(
@@ -20,6 +23,19 @@ export class FkNewsCardComponent implements OnInit {
 
   ngOnInit() {
     this.getPosts();
+  }
+
+  likedPost(postID: number) {
+    let currentUser = JSON.parse(localStorage.getItem('currentUser')).username
+    let post = this.posts.find(post => post.id == postID)
+    var index = post.likes.indexOf(currentUser, 0);
+    if (index > -1) {
+      this.postService.postLiked(postID);
+      delete post.likes.splice(index, 1);
+    } else {
+      this.postService.postLiked(postID);
+      post.likes.push(currentUser)
+    }
   }
 
 }
