@@ -29,15 +29,13 @@ export class CommentFormComponent implements OnInit {
 
   onSubmit() {
     const form = this.commentForm.value;
-    let user: User;
-    user.username = this.currentUser.username;
+    this.commentForm.reset();
     const comment: IComment = {    
-      author: user,
+      author: this.currentUser.username,
       content: form.content,
       publish_date: new Date().toDateString(),
       post: this.post
-    };
-    this.commentForm.value.content = "";
+    };    
     console.log(this.commentService.create(comment).subscribe(ok => console.log(ok)));
   }
 }

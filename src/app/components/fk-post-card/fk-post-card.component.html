@@ -11,8 +11,10 @@
             <fp-comment-form [post]="post.id"></fp-comment-form>
         </div>
         <span class="comments-title">Comments:</span>
-        <div class="list" *ngFor="let comment of post.comments">
-            <fp-comment [comment]="comment"></fp-comment>
+        <div class="comments-list">
+            <div class="list" *ngFor="let comment of post.comments">
+                <fp-comment [comment]="comment"></fp-comment>
+            </div>
         </div>
     </div>
 </div>

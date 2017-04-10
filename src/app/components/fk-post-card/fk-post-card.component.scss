@@ -16,6 +16,10 @@
         font-size: 22px;
         font-weight: 700;
     }
+    .comments-list {
+        display: flex;
+        flex-direction: column-reverse;
+    }
     .list {
         display: flex;
         flex-direction: column-reverse;
