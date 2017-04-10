@@ -1,5 +1,6 @@
 import { IComment } from "./comment";
-import { User } from './user'
+import { User } from './user';
+import { Like } from './like';
 
 export class Post {
   id: number;
@@ -9,4 +10,6 @@ export class Post {
   publish_date: string;
   author: User;
   comments: IComment[];
+  isLiked: boolean;
+  likes: Like[];
 }

@@ -1,18 +1,21 @@
-
-  <div class="news-container">
+<div class="news-container">
     <md-card *ngFor="let post of posts, let i = index" [fxFlexOffset]="i%2 ? 4 : 10" fxFlex="38" style="margin-bottom: 30px">
-      <md-card-title> {{ post.title }} </md-card-title>
-      <md-card-subtitle> 
-        By {{ post.author.username }} | Date: {{ post.publish_date | date: 'd/MM/yyyy'}}
-      </md-card-subtitle>
-      <md-card-content> {{ post.short_description }} </md-card-content>
-      <md-card-actions>
-      <button md-button>
-          <md-icon>favorite</md-icon> 30
+        <md-card-title> {{ post.title }} </md-card-title>
+        <md-card-subtitle>
+            By {{ post.author.username }} | <span>{{ post.publish_date | timeAgo}}</span>
+        </md-card-subtitle>
+        <md-card-content> {{ post.short_description }} </md-card-content>
+        <md-card-actions>
+            <button (click)="likedPost(post.id)" md-ripple="white" md-button>
+          <md-icon *ngIf="post.isLiked" style="color: red">favorite</md-icon> 
+          <md-icon *ngIf="!post.isLiked">favorite</md-icon> 
+          {{ post.likes.length}}
+
       </button>
-      <button md-button>
-        <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="1"><md-icon>comments</md-icon></div></button>
-      <a style="float: right" routerLink ="/news/{{ post.id }}" md-button color="accent"> READ MORE</a>
-      </md-card-actions>
+            <button md-button>
+        <div class="material-icons mdl-badge mdl-badge--overlap" attr.data-badge="{{ post.comments.length }}"><md-icon>comments</md-icon></div></button>
+
+            <a style="float: right" routerLink="/news/{{ post.id }}" md-button color="accent"> READ MORE</a>
+        </md-card-actions>
     </md-card>
-  </div>
+</div>
