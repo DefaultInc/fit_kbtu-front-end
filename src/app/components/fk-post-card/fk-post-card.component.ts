@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { slideInDownAnimation } from '../../animations';
 
 import { Post } from '../../models/post';
+import { User } from '../../models/user';
+
 import { PostService } from '../../services/post.service';
 
 @Component({
@@ -18,12 +20,18 @@ export class FkPostCardComponent implements OnInit {
   @HostBinding('style.width')  width = '100%';
 
   public post: Post;
+  user: User;
 
-  constructor(private postService: PostService, private route: ActivatedRoute) { }
+  constructor(private postService: PostService, private route: ActivatedRoute) { 
+    this.user = JSON.parse(localStorage.getItem('currentUser'))
+  }
 
   getPost(id: number) {
     this.postService.getPostById(id).subscribe(
-    post => this.post = post);
+    post => { 
+      this.post = post;
+      this.post.isLiked = this.postIsLiked(this.post)
+    });
   }
 
   ngOnInit() {
@@ -33,4 +41,22 @@ export class FkPostCardComponent implements OnInit {
       }
     });
   }
+
+  postIsLiked(post: Post): boolean {
+    return post.likes.find(like => like.author.username==this.user.username) != undefined
+  }
+
+  likedPost() {
+    var like = this.post.likes.find(like => like.author.username==this.user.username);
+    if (like) {
+      this.postService.postLiked(this.post.id);
+      this.post.likes = this.post.likes.filter(like => like.author.username!=this.user.username);
+      this.post.isLiked = false;
+    } else {
+      this.postService.postLiked(this.post.id);
+      this.post.likes.push({'author': this.user})
+      this.post.isLiked = true;
+    }
+  }
+
 }
