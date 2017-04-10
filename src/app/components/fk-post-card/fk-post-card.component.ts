@@ -4,6 +4,7 @@ import { slideInDownAnimation } from '../../animations';
 
 import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
+import { CommentService } from "../../services/comment.service";
 
 @Component({
   selector: 'app-fk-post-card',
@@ -19,7 +20,11 @@ export class FkPostCardComponent implements OnInit {
 
   public post: Post;
 
-  constructor(private postService: PostService, private route: ActivatedRoute) { }
+  constructor(
+    private postService: PostService, 
+    private commentService: CommentService, 
+    private route: ActivatedRoute   
+  ) { }
 
   getPost(id: number) {
     this.postService.getPostById(id).subscribe(
@@ -27,6 +32,9 @@ export class FkPostCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.commentService.onCreate.subscribe(comment => {      
+      this.post.comments.push(comment);
+    });
     this.route.params.subscribe(params => {
       if (params['id'] as number) {
         this.getPost(params['id']);
