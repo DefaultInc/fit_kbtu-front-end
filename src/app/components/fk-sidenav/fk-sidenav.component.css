@@ -5,6 +5,10 @@
   overflow: hidden;
 }
 
+md-sidenav-container {
+    padding-bottom: 40px;
+}
+
 app-fk-news-card {
   flex: 2 2 auto;     
   overflow-y: auto;     

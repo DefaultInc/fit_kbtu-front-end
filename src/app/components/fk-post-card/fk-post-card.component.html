@@ -2,19 +2,27 @@
     <md-card style="width: 100%;">
         <md-card-title> {{ post.title }} </md-card-title>
         <md-card-subtitle>
-            By {{ post.author }} | Date: {{ post.publish_date | date: 'd/MM/yyyy'}}
+            By {{ post.author.username }} | <span>{{ post.publish_date | timeAgo}}</span>
         </md-card-subtitle>
         <md-card-content> {{ post.content }} </md-card-content>
+
+        <md-card-actions>
+            <button (click)="likedPost(post.id)" md-ripple="white" md-button>
+          <md-icon *ngIf="post.isLiked" style="color: red">favorite</md-icon> 
+          <md-icon *ngIf="!post.isLiked">favorite</md-icon> 
+          {{ post.likes.length }}
+
+      </button>
+            <button md-button>
+        <div class="material-icons mdl-badge mdl-badge--overlap" attr.data-badge="{{ post.comments.length }}"><md-icon>comments</md-icon></div></button>
+        </md-card-actions>
     </md-card>
     <div class="comments">
         <div class="comment-form">
             <fp-comment-form [post]="post.id"></fp-comment-form>
         </div>
         <span class="comments-title">Comments:</span>
-        <div class="comments-list">
-            <div class="list" *ngFor="let comment of post.comments">
-                <fp-comment [comment]="comment"></fp-comment>
-            </div>
+        <div class="list" *ngFor="let comment of post.comments">
+            <fp-comment [comment]="comment"></fp-comment>
         </div>
     </div>
-</div>
