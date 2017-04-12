@@ -4,6 +4,8 @@ import { MainPageComponent } from './main-page.component';
 import { MaterialModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TimeAgoPipe } from 'time-ago-pipe';
+
     
 
 import { FkNewsCardComponent } from '../components/fk-news-card/fk-news-card.component';
@@ -17,8 +19,9 @@ import { FkNewsCardComponent } from '../components/fk-news-card/fk-news-card.com
   ],
   declarations: [
     MainPageComponent,
-    FkNewsCardComponent
+    FkNewsCardComponent,
+    TimeAgoPipe
   ],
-  exports: [FkNewsCardComponent]
+  exports: [FkNewsCardComponent, TimeAgoPipe]
 })
 export class MainPageModule { }

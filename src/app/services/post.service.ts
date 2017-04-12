@@ -10,6 +10,7 @@ import { Post } from '../models/post';
 @Injectable()
 export class PostService {
   private PostsURL = "http://localhost:8000/posts/";
+  private likeURL = "http://localhost:8000/like/";
 
   constructor(private http: Http) {};
 
@@ -23,6 +24,10 @@ export class PostService {
     return this.http.get(this.PostsURL + id.toString()+"/")
                     .map(this.extractData)
                     .catch(this.handleError);
+  }
+
+  postLiked(id: number) {
+    this.http.post(this.likeURL, {"post": id}, this.jwt()).subscribe()
   }
 
   private extractData(res: Response) {

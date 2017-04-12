@@ -21,6 +21,7 @@ import { CommentFormComponent } from './components/comment-form/comment-form.com
 
 import { PostService } from './services/post.service';
 import { AuthenticationService } from './services/authentication.service';
+import { SharedService } from './services/shared.service';
 import { CommentService } from "./services/comment.service";
 import { SelectorDirective } from "./test/selector.directive";
 
@@ -49,7 +50,8 @@ import { SelectorDirective } from "./test/selector.directive";
     SidenavRoutingModule
   ],
   entryComponents: [FkLoginComponent, FkSignupComponent],
-  providers: [PostService, AuthenticationService, CommentService],
+  providers: [PostService, AuthenticationService, SharedService, CommentService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
