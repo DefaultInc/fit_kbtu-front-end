@@ -6,6 +6,7 @@ import { Post } from '../../models/post';
 import { User } from '../../models/user';
 
 import { PostService } from '../../services/post.service';
+import { CommentService } from "../../services/comment.service";
 
 @Component({
   selector: 'app-fk-post-card',
@@ -22,7 +23,11 @@ export class FkPostCardComponent implements OnInit {
   public post: Post;
   user: User;
 
-  constructor(private postService: PostService, private route: ActivatedRoute) { 
+  constructor(
+    private postService: PostService, 
+    private commentService: CommentService, 
+    private route: ActivatedRoute   
+  ) { 
     this.user = JSON.parse(localStorage.getItem('currentUser'))
   }
 
@@ -35,6 +40,9 @@ export class FkPostCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.commentService.onCreate.subscribe(comment => {      
+      this.post.comments.push(comment);
+    });
     this.route.params.subscribe(params => {
       if (params['id'] as number) {
         this.getPost(params['id']);

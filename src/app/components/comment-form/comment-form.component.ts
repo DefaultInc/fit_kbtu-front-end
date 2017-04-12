@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { CommentService } from "../../services/comment.service";
 import { Post } from "../../models/post";
+import { User } from "../../models/user";
 
 
 @Component({
@@ -28,13 +29,13 @@ export class CommentFormComponent implements OnInit {
 
   onSubmit() {
     const form = this.commentForm.value;
-    console.log(form);
+    this.commentForm.reset();
     const comment: IComment = {    
       author: this.currentUser.username,
       content: form.content,
       publish_date: new Date().toDateString(),
       post: this.post
-    };
+    };    
     console.log(this.commentService.create(comment).subscribe(ok => console.log(ok)));
   }
 }

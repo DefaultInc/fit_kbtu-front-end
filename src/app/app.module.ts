@@ -23,6 +23,7 @@ import { PostService } from './services/post.service';
 import { AuthenticationService } from './services/authentication.service';
 import { SharedService } from './services/shared.service';
 import { CommentService } from "./services/comment.service";
+import { SelectorDirective } from "./test/selector.directive";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CommentService } from "./services/comment.service";
     FkNotFoundComponent,
     FkPostCardComponent,
     CommentComponent,
-    CommentFormComponent
+    CommentFormComponent,
+    SelectorDirective    
   ],
   imports: [
     BrowserModule,
