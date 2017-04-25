@@ -30,7 +30,11 @@ export class FkNewsCardComponent implements OnInit {
   }
 
   postIsLiked(post: Post): boolean {
-    return post.likes.find(like => like.author.username==this.user.username) != undefined
+    if (this.user) {
+      return post.likes.find(like => like.author.username==this.user.username) != undefined
+    } else {
+      return false
+    }
   }
 
   likedPost(postID: number) {

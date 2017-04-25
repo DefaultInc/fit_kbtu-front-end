@@ -1,10 +1,15 @@
 .dialog-content {
-  width: 400px;
+    width: 400px;
 }
+
 .full-width {
-  width: 100%;
+    width: 100%;
 }
 
 .action_container {
-  float:right;
+    float: right;
+}
+
+form {
+    margin-top: 16px;
 }

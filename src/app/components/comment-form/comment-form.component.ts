@@ -36,6 +36,6 @@ export class CommentFormComponent implements OnInit {
       publish_date: new Date().toDateString(),
       post: this.post
     };    
-    console.log(this.commentService.create(comment).subscribe(ok => console.log(ok)));
+    console.log(this.commentService.create(comment));
   }
 }

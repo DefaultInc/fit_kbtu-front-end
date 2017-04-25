@@ -15,7 +15,7 @@ export class CommentService {
     create(comment: IComment) {
         console.log("Submitted");
         const request = this.http.post('http://127.0.0.1:8000/comments/', comment, this.jwt()).map((response: Response) => response.json());
-        request.subscribe(req => this.onCreateSubject.next(comment));
+        request.subscribe(req => this.onCreateSubject.next(comment));        
         return request;
     }
  
