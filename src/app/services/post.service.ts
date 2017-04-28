@@ -11,11 +11,10 @@ import { Post } from '../models/post';
 export class PostService {
   private PostsURL = "http://localhost:8000/posts/";
   private likeURL = "http://localhost:8000/like/";
-
   constructor(private http: Http) {};
 
-  getPosts(): Observable<Post[]> {
-    return this.http.get(this.PostsURL, this.jwt())
+  getPosts(pageNum: number): Observable<Post[]> {
+    return this.http.get(this.PostsURL+"?page="+pageNum)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
