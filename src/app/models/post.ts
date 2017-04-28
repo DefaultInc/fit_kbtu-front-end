@@ -12,4 +12,5 @@ export class Post {
   comments: IComment[];
   isLiked: boolean;
   likes: Like[];
+  image: string;
 }

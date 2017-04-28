@@ -12,16 +12,18 @@ import { User } from '../../models/user';
 export class FkNewsCardComponent implements OnInit {
  
   posts: Post[];
-  user: User;
+  user: User;  
   constructor(private postService: PostService) { 
     this.user = JSON.parse(localStorage.getItem('currentUser'))
   }
 
   getPosts() {
+    let path = "http://localhost:8000";
     this.postService.getPosts().subscribe(
     posts => {
       this.posts = posts;
       this.posts.forEach(post => post.isLiked = this.postIsLiked(post));
+      this.posts.forEach(post => post.image = path + post.image);
     })
   }
 
