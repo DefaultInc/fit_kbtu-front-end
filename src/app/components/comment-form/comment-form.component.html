@@ -8,8 +8,12 @@
         <label class="mdl-textfield__label" for="comment">Comment</label>
     </div>
     <div class="buttons">
-        <button md-button type="submit" color="primary">
+
+        <button md-button type="submit" color="primary" *ngIf="currentUser">
             Comment
+        </button>
+        <button md-raised-button type="submit" color="primary" disabled *ngIf="!currentUser">
+            Please, log in to comment
         </button>
     </div>
 </form>
