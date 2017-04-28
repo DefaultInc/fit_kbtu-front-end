@@ -38,6 +38,7 @@ export class FkNewsCardComponent implements OnInit {
   }
 
   likedPost(postID: number) {
+    if (!this.user) return;
     var post = this.posts.find(post => post.id == postID)
     var like = post.likes.find(like => like.author.username==this.user.username);
     if (like) {
