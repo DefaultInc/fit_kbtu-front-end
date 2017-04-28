@@ -1,8 +1,8 @@
-.wrapper{
-  display: flex;
-  flex-direction: column;            
-  height: 100vh;
-  overflow: hidden;
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
 }
 
 md-sidenav-container {
@@ -10,10 +10,14 @@ md-sidenav-container {
 }
 
 app-fk-news-card {
-  flex: 2 2 auto;     
-  overflow-y: auto;     
+    flex: 2 2 auto;
+    overflow-y: auto;
 }
 
 md-sidenav {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+span {
+    margin-left: 10%;
 }
