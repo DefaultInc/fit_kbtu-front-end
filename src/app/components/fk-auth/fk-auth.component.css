@@ -10,6 +10,13 @@
     float: right;
 }
 
-form {
-    margin-top: 16px;
+.input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+md-icon {
+    font-size: 25px;
+    padding-bottom: 2%;
 }
