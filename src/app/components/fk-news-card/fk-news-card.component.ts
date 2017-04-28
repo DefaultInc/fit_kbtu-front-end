@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, Output, OnInit, Type, EventEmitter, HostListener, Renderer2,ElementRef } from '@angular/core';
+import { NguiInfiniteListDirective } from '@ngui/infinite-list';
 
 import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
@@ -12,28 +13,37 @@ import { User } from '../../models/user';
 export class FkNewsCardComponent implements OnInit {
  
   posts: Post[];
-  user: User;  
-  constructor(private postService: PostService) { 
+  user: User;
+  curPage: number;
+  @ViewChild(NguiInfiniteListDirective)
+  private infScrollComponent: NguiInfiniteListDirective;
+
+  @HostListener('window:scroll', ['$event']) 
+    scrolled(event) {
+      this.infScrollComponent.scrollListener()
+    }
+
+  constructor(private postService: PostService,
+  private _renderer: Renderer2,
+  private _elementRef: ElementRef) { 
     this.user = JSON.parse(localStorage.getItem('currentUser'))
   }
 
-  getPosts() {
-    let path = "http://localhost:8000";
-    this.postService.getPosts().subscribe(
-    posts => {
-      this.posts = posts;
-      this.posts.forEach(post => post.isLiked = this.postIsLiked(post));
-      this.posts.forEach(post => post.image = path + post.image);
-    })
-  }
-
   ngOnInit() {
-    this.getPosts();
+    this.posts = []
+    this.curPage = 1
+    this._renderer.listen(this._elementRef.nativeElement.parentNode, 
+    'scroll', (event) => {
+      this.scrolled(event)
+    });
   }
 
   postIsLiked(post: Post): boolean {
-    if (!this.user) return false;
-    return post.likes.find(like => like.author.username==this.user.username) != undefined
+    if (this.user) {
+      return post.likes.find(like => like.author.username==this.user.username) != undefined
+    } else {
+      return false
+    }
   }
 
   likedPost(postID: number) {
@@ -50,5 +60,30 @@ export class FkNewsCardComponent implements OnInit {
       post.isLiked = true;
     }
   }
+
+    set1: any = {
+      endOfList: false, loadingInProgress: false
+    };
+
+    loadMore(data: any): void {
+      if (!data.endOfList && !data.loadingInProgress) {
+          data.loadingInProgress = true
+          this.postService.getPosts(this.curPage).subscribe(
+          postsOnPage => {
+            const posts: Post[] = postsOnPage['results']
+            posts.forEach(post => {
+              post.isLiked = this.postIsLiked(post)
+              post.image = post.image
+              this.posts.push(post)
+            });
+            if (!postsOnPage["next"]) {
+              data.endOfList = true;
+            } else {
+              this.curPage += 1
+            }
+            data.loadingInProgress = false;
+          })
+        }
+      }
 
 }

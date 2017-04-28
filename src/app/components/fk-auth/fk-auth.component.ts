@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
-import { MdDialogRef } from '@angular/material';
+import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { AuthenticationService } from '../../services/authentication.service'
 
 @Component({
   selector: 'app-fk-login',
-  templateUrl: './fk-login.component.html',
+  templateUrl: './fk-auth.component.html',
   styleUrls: ['./fk-auth.component.css']
 })
 export class FkLoginComponent implements OnInit {
@@ -13,10 +13,14 @@ export class FkLoginComponent implements OnInit {
   model: any = {};
   loading = false;
   returnUrl: string;
+  focusTab: number;
   
   constructor(
         private authenticationService: AuthenticationService,
-        public dialogRef: MdDialogRef<FkLoginComponent>) { }
+        public dialogRef: MdDialogRef<FkLoginComponent>,
+        @Inject(MD_DIALOG_DATA) public data: any) {
+            this.focusTab = data == 'login' ? 1 : 0;
+        }
   
     
   ngOnInit() {
@@ -37,27 +41,8 @@ export class FkLoginComponent implements OnInit {
                     this.loading = false;
                 });
     }
-}
 
-@Component({
-  selector: 'app-fk-signup',
-  templateUrl: './fk-signup.component.html',
-  styleUrls: ['./fk-auth.component.css']
-})
-export class FkSignupComponent implements OnInit {
-
-  model: any = {};
-  loading = false;
-  returnUrl: string;
-
-  constructor(private authenticationService: AuthenticationService,
-              public dialogRef: MdDialogRef<FkSignupComponent>) { }
-  
-  closeDialog() {
-    this.dialogRef.close();  
-  }
-  
-  signUp() {
+signUp() {
       this.loading = true;
       this.authenticationService.signUp(this.model.username, this.model.password)
           .subscribe(
@@ -69,19 +54,4 @@ export class FkSignupComponent implements OnInit {
                   this.loading = false;
               });
   }
-
-  private login() {
-      this.loading = true;
-      this.authenticationService.login(this.model.username, this.model.password)
-          .subscribe(
-              data => {
-              },
-              error => {
-                  this.loading = false;
-              });
-  }
-
-  ngOnInit() {
-  }
-
 }

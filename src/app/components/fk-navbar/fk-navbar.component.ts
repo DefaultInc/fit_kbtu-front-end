@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 
 import { MdDialog } from '@angular/material';
-import { FkLoginComponent, FkSignupComponent } from '../fk-auth/fk-auth.component';
+import { FkLoginComponent } from '../fk-auth/fk-auth.component';
 import { AuthenticationService } from '../../services/authentication.service'
 import { SharedService } from '../../services/shared.service';
 
@@ -50,11 +50,15 @@ export class FkNavbarComponent implements OnInit {
   }
 
   openLoginDialog() {
-    this.dialog.open(FkLoginComponent);
+    this.dialog.open(FkLoginComponent, {
+      data: 'login'
+    });
   }
    
   openSignupDialog() {
-    this.dialog.open(FkSignupComponent);
+    this.dialog.open(FkLoginComponent, {
+      data: 'signup'
+    });
   }
 
   logout() {

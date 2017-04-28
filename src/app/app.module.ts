@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
 import { FkNavbarComponent } from './components/fk-navbar/fk-navbar.component';
 import { FkSidenavComponent } from './components/fk-sidenav/fk-sidenav.component';
 import { FkNotFoundComponent } from './components/fk-not-found/fk-not-found.component';
-import { FkLoginComponent, FkSignupComponent } from './components/fk-auth/fk-auth.component';
+import { FkLoginComponent } from './components/fk-auth/fk-auth.component';
 import { FkPostCardComponent } from './components/fk-post-card/fk-post-card.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
@@ -32,7 +32,6 @@ import { SelectorDirective } from "./test/selector.directive";
     FkNavbarComponent,
     FkSidenavComponent,
     FkLoginComponent,
-    FkSignupComponent,
     FkNotFoundComponent,
     FkPostCardComponent,
     CommentComponent,
@@ -51,7 +50,7 @@ import { SelectorDirective } from "./test/selector.directive";
     ReactiveFormsModule,
     SidenavRoutingModule
   ],
-  entryComponents: [FkLoginComponent, FkSignupComponent],
+  entryComponents: [FkLoginComponent],
   providers: [PostService, AuthenticationService, SharedService, CommentService],
 
   bootstrap: [AppComponent]
