@@ -32,10 +32,12 @@ export class FkPostCardComponent implements OnInit {
   }
 
   getPost(id: number) {
+    let path = "http://localhost:8000";
     this.postService.getPostById(id).subscribe(
     post => { 
       this.post = post;
-      this.post.isLiked = this.postIsLiked(this.post)
+      this.post.isLiked = this.postIsLiked(this.post);
+      this.post.image = path + post.image;
     });
   }
 

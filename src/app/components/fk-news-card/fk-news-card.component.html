@@ -1,5 +1,6 @@
 <div class="news-container">
     <md-card *ngFor="let post of posts, let i = index" [fxFlexOffset]="i%2 ? 4 : 10" fxFlex="38" style="margin-bottom: 30px">
+        <img md-card-image [src]="post.image">
         <md-card-title> {{ post.title }} </md-card-title>
         <md-card-subtitle>
             By {{ post.author.username }} | <span>{{ post.publish_date | timeAgo}}</span>
