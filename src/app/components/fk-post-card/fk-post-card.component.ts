@@ -34,10 +34,10 @@ export class FkPostCardComponent implements OnInit {
   getPost(id: number) {
     let path = "http://localhost:8000";
     this.postService.getPostById(id).subscribe(
-    post => { 
-      this.post = post;
-      this.post.isLiked = this.postIsLiked(this.post);
-      this.post.image = path + post.image;
+      post => { 
+        this.post = post;
+        this.post.isLiked = this.postIsLiked(this.post);
+        this.post.image = path + post.image;
     });
   }
 
@@ -53,7 +53,11 @@ export class FkPostCardComponent implements OnInit {
   }
 
   postIsLiked(post: Post): boolean {
-    return post.likes.find(like => like.author.username==this.user.username) != undefined
+    if (this.user) {
+      return post.likes.find(like => like.author.username==this.user.username) != undefined
+    } else {
+      return false
+    }
   }
 
   likedPost() {
