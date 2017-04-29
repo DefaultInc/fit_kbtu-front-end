@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class AuthenticationService {
     public token: string;
+    private apiURL = "http://fit.kbtu.kz:8000/"
 
     constructor(private http: Http) {
         // set token if saved in local storage
@@ -26,7 +27,7 @@ export class AuthenticationService {
     login(username: string, password: string): Observable<boolean> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post('http://localhost:8000/auth/login/', JSON.stringify({ username: username, password: password }), options)
+        return this.http.post(this.apiURL + 'auth/login/', JSON.stringify({ username: username, password: password }), options)
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
@@ -49,7 +50,7 @@ export class AuthenticationService {
     signUp(email: string, password: string): Observable<boolean> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post('http://localhost:8000/auth/register/', JSON.stringify({ username: email, password: password }), options)
+        return this.http.post(this.apiURL + 'auth/register/', JSON.stringify({ username: email, password: password }), options)
             .map((response: Response) => {
                 if (response.status === 201) {
                     return true;

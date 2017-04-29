@@ -9,8 +9,8 @@ import { Post } from '../models/post';
 
 @Injectable()
 export class PostService {
-  private PostsURL = "http://localhost:8000/posts/";
-  private likeURL = "http://localhost:8000/like/";
+  private PostsURL = "http://fit.kbtu.kz:8000/posts/";
+  private likeURL = "http://fit.kbtu.kz:8000/like/";
   constructor(private http: Http) {};
 
   getPosts(pageNum: number): Observable<Post[]> {

@@ -26,9 +26,6 @@ import { SharedService } from './services/shared.service';
 import { CommentService } from "./services/comment.service";
 import { SelectorDirective } from "./test/selector.directive";
 
-import { Ng2DjangoChannelsDataBindingModule } from 'ng2-django-channels-data-binding';
-import { Ng2DjangoChannelsDemultiplexingModule } from 'ng2-django-channels-demultiplexing';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,8 +49,6 @@ import { Ng2DjangoChannelsDemultiplexingModule } from 'ng2-django-channels-demul
     MainPageModule,
     ReactiveFormsModule,
     SidenavRoutingModule,
-    Ng2DjangoChannelsDataBindingModule,
-    Ng2DjangoChannelsDemultiplexingModule.forRoot({websocket_url: 'ws://127.0.0.1:8001/api/ws'})
   ],
   entryComponents: [FkLoginComponent],
   providers: [PostService, AuthenticationService, SharedService, CommentService],
