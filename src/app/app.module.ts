@@ -43,7 +43,7 @@ import { SelectorDirective } from "./test/selector.directive";
     BrowserAnimationsModule,
     FormsModule,
     MaterialModule,
-    FlexLayoutModule.forRoot(),
+    FlexLayoutModule,
     HttpModule,
     AppRoutingModule,
     MainPageModule,

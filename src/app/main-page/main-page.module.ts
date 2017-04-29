@@ -15,7 +15,7 @@ import { FkNewsCardComponent } from '../components/fk-news-card/fk-news-card.com
     CommonModule,
     MaterialModule,
     RouterModule,
-    FlexLayoutModule.forRoot(),
+    FlexLayoutModule,
     NguiInfiniteListModule
   ],
   declarations: [
