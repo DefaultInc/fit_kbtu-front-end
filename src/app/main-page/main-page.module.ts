@@ -5,7 +5,7 @@ import { MaterialModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TimeAgoPipe } from 'time-ago-pipe';
-
+import { NguiInfiniteListModule } from '@ngui/infinite-list';
     
 
 import { FkNewsCardComponent } from '../components/fk-news-card/fk-news-card.component';
@@ -16,6 +16,7 @@ import { FkNewsCardComponent } from '../components/fk-news-card/fk-news-card.com
     MaterialModule,
     RouterModule,
     FlexLayoutModule.forRoot(),
+    NguiInfiniteListModule
   ],
   declarations: [
     MainPageComponent,

@@ -1,13 +1,20 @@
 <div class="wrapper">
     <md-sidenav-container>
         <md-sidenav #sidenav mode="side" opened="true">
-            <img src="./../../../assets/fit-logo.jpg" alt="" width="250" height="250">
+            <img src="./../../../assets/fit-logo.jpg" alt="" style="margin: 20px;" width="190" height="190">
             <md-nav-list>
                 <h3 md-subheader>Information</h3>
-                <a md-list-item routerLink="/news" routerLinkActive="active">
-                    <md-icon>new_releases</md-icon> <span>News</span> </a>
-                <a md-list-item>
-                    <md-icon>help</md-icon> <span>About ThinkIT</span> </a>
+                <md-divider></md-divider>
+                <md-list-item>
+                    <md-icon md-list-icon>new_releases</md-icon> <span>News</span>
+                    <a routerLink="/news" routerLinkActive="active"></a>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item>
+                    <md-icon md-list-icon>help</md-icon>
+                    <a> </a> <span>About ThinkIT</span>
+                </md-list-item>
+                <md-divider></md-divider>
             </md-nav-list>
         </md-sidenav>
         <router-outlet></router-outlet>

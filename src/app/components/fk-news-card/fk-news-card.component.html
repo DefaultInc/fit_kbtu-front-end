@@ -1,6 +1,6 @@
-<div class="news-container">
+<div ngui-infinite-list class="news-container" [enableWindowScroll]="true" [disableScrollListener]="set1.loadingInProgress" (endVisible)="loadMore(set1)">
     <md-card *ngFor="let post of posts, let i = index" [fxFlexOffset]="i%2 ? 4 : 10" fxFlex="38" style="margin-bottom: 30px">
-        <img md-card-image [src]="post.image">
+        <img *ngIf="post.image" md-card-image [src]="post.image">
         <md-card-title> {{ post.title }} </md-card-title>
         <md-card-subtitle>
             By {{ post.author.username }} | <span>{{ post.publish_date | timeAgo}}</span>
@@ -19,4 +19,10 @@
             <a style="float: right" routerLink="/news/{{ post.id }}" md-button color="accent"> READ MORE</a>
         </md-card-actions>
     </md-card>
+    <div ngui-infinite-list-end style="height:75px" fxFlex="100" fxLayoutAlign="center center">
+        <div *ngIf="set1.loadingInProgress">
+            <md-spinner style="width: 50px;height: 50px;" color="accent" [attr.mode]="Indeterminate">
+            </md-spinner>
+        </div>
+    </div>
 </div>
