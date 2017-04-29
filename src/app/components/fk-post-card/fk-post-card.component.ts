@@ -32,7 +32,7 @@ export class FkPostCardComponent implements OnInit {
   }
 
   getPost(id: number) {
-    let path = "http://localhost:8000";
+    let path = "http://fit.kbtu.kz:8000";
     this.postService.getPostById(id).subscribe(
       post => { 
         this.post = post;
