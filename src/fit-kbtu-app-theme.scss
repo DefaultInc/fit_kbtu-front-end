@@ -33,28 +33,12 @@ body {
     }
 }
 
-html,
-body {
-    height: 100%;
-    font-size: 14px;
-}
-
-html {
-    display: table;
-    width: 100%;
-    background: #f1f1f1;
-}
-
-body {
-    position: relative;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-}
-
 .Wrap {
     max-width: 9em;
     margin: 0 auto;
+    display: flex;
+    align-self: center;
+    margin-top: 200px;
 }
 
 .loaderWrap {
