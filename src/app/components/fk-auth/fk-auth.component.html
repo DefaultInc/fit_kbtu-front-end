@@ -1,63 +1,60 @@
 <div MdDialogContent class="dialog-content">
-    <md-tab-group md-stretch-tabs dynamicHeight="true" selectedIndex={{focusTab}} tabindex="-1">
-        <md-tab label="Register to FIT ">
+    <div *ngIf="!isLoginForm">
+        <h5 MdDialogTitle> Register to FIT </h5>
+        <!-- <h1 md-dialog-title> Register to FIT </h1> -->
+        <form (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+            <div class="input">
+                <md-icon color="primary">account_circle</md-icon>
+                <md-input-container class="full-width">
+                    <input mdInput autofocus type="text" placeholder="Username" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required>
+                </md-input-container>
+            </div>
+            <br>
+            <div class="input">
+                <md-icon color="primary">email</md-icon>
+                <md-input-container class="full-width">
+                    <input mdInput type="email" placeholder="e-mail" class="form-control" name="email" [(ngModel)]="model.email" #username="ngModel" required>
+                </md-input-container>
+            </div>
 
-            <!-- <h1 md-dialog-title> Register to FIT </h1> -->
-            <form (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-                <div class="input">
-                    <md-icon color="primary">account_circle</md-icon>
-                    <md-input-container class="full-width">
-                        <input mdInput autofocus type="text" placeholder="Username" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required>
-                    </md-input-container>
-                </div>
-                <br>
-                <div class="input">
-                    <md-icon color="primary">email</md-icon>
-                    <md-input-container class="full-width">
-                        <input mdInput type="email" placeholder="e-mail" class="form-control" name="email" [(ngModel)]="model.email" #username="ngModel" required>
-                    </md-input-container>
-                </div>
-
-                <br>
-                <div class="input">
-                    <md-icon color="primary">lock</md-icon>
-                    <md-input-container class="full-width">
-                        <input mdInput type="Password" placeholder="Password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required>
-                    </md-input-container>
-                </div>
-
-
-                <div MdDialogActions class="action_container">
-                    <button color="accent" md-button tabindex="-1" (click)="closeDialog()"> CANCEL </button>
-                    <button color="accent" md-button [disabled]="loading" (click)="signUp()"> SIGN UP </button>
-                </div>
-            </form>
-        </md-tab>
-        <md-tab label="Enter to FIT">
-            <!-- <h1 md-dialog-title> Enter to FIT </h1> -->
-            <form (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-                <div class="input">
-                    <md-icon color="primary">account_circle</md-icon>
-                    <md-input-container class="full-width">
-                        <input mdInput autofocus type="Username" placeholder="Username" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required>
-                    </md-input-container>
-                </div>
-
-                <br>
-                <div class="input">
-                    <md-icon color="primary">lock</md-icon>
-                    <md-input-container class="full-width">
-                        <input mdInput type="password" placeholder="Password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required>
-                    </md-input-container>
-                </div>
+            <br>
+            <div class="input">
+                <md-icon color="primary">lock</md-icon>
+                <md-input-container class="full-width">
+                    <input mdInput type="Password" placeholder="Password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+                </md-input-container>
+            </div>
 
 
-                <div MdDialogActions class="action_container">
-                    <button color="accent" md-button tabindex="-1" (click)="closeDialog()"> CANCEL </button>
-                    <button color="accent" md-button [disabled]="loading" (click)="login()"> LOG IN </button>
-                </div>
-            </form>
-        </md-tab>
-    </md-tab-group>
+            <div MdDialogActions class="action_container">
+                <button color="accent" md-button tabindex="-1" (click)="closeDialog()"> CANCEL </button>
+                <button color="accent" md-button [disabled]="loading" (click)="signUp()"> SIGN UP </button>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="isLoginForm">
+        <h5 MdDialogTitle> Login to FIT </h5>
+        <form (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+            <div class="input">
+                <md-icon color="primary">account_circle</md-icon>
+                <md-input-container class="full-width">
+                    <input mdInput autofocus type="Username" placeholder="Username" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required>
+                </md-input-container>
+            </div>
 
+            <br>
+            <div class="input">
+                <md-icon color="primary">lock</md-icon>
+                <md-input-container class="full-width">
+                    <input mdInput type="password" placeholder="Password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+                </md-input-container>
+            </div>
+
+
+            <div MdDialogActions class="action_container">
+                <button color="accent" md-button tabindex="-1" (click)="closeDialog()"> CANCEL </button>
+                <button color="accent" md-button [disabled]="loading" (click)="login()"> LOG IN </button>
+            </div>
+        </form>
+    </div>
 </div>

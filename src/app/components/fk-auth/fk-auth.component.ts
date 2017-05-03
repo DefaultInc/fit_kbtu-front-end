@@ -14,12 +14,13 @@ export class FkLoginComponent implements OnInit {
   loading = false;
   returnUrl: string;
   focusTab: number;
+  isLoginForm: boolean
   
   constructor(
         private authenticationService: AuthenticationService,
         public dialogRef: MdDialogRef<FkLoginComponent>,
         @Inject(MD_DIALOG_DATA) public data: any) {
-            this.focusTab = data == 'login' ? 1 : 0;
+            this.isLoginForm = data == 'login' ? true : false;
         }
   
     

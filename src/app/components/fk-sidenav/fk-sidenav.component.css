@@ -28,3 +28,8 @@ a {
 span {
     margin-left: 10%;
 }
+
+md-icon {
+    color: rgba(0, 0, 0, 0.54);
+    font: bold;
+}

@@ -1,13 +1,18 @@
 .dialog-content {
-    width: 450px;
+    width: 400px;
 }
 
 .full-width {
-    width: 100%;
+    width: 402px;
 }
 
 .action_container {
     float: right;
+}
+
+h5 {
+    margin-top: 0px;
+    text-align: center;
 }
 
 .input {
@@ -19,4 +24,5 @@
 md-icon {
     font-size: 25px;
     padding-bottom: 2%;
+    margin-right: 16px;
 }
