@@ -7,6 +7,8 @@ import { User } from '../../models/user';
 
 import { PostService } from '../../services/post.service';
 import { CommentService } from "../../services/comment.service";
+import { SharedService } from "../../services/shared.service";
+
 
 @Component({
   selector: 'app-fk-post-card',
@@ -26,7 +28,8 @@ export class FkPostCardComponent implements OnInit {
   constructor(
     private postService: PostService, 
     private commentService: CommentService, 
-    private route: ActivatedRoute   
+    private route: ActivatedRoute,
+    private sharedService: SharedService
   ) { 
     this.user = JSON.parse(localStorage.getItem('currentUser'))
   }
@@ -71,6 +74,10 @@ export class FkPostCardComponent implements OnInit {
       this.post.likes.push({'author': this.user})
       this.post.isLiked = true;
     }
+  }
+
+  showPostAuthorProfile() {
+    this.sharedService.showUserProfile(this.post.author.username)
   }
 
 }

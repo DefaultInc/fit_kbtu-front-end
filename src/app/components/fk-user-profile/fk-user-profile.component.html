@@ -1,0 +1,40 @@
+<div *ngIf="username">
+    <h5 MdDialogTitle> More About {{username}} </h5>
+    <md-divider></md-divider>
+    <div MdDialogContent class="dialog-content" style="display: flex">
+        <img style="margin-left: auto; margin-right:auto; display: inline-block;" src="assets/user_defaut.jpg" alt="">
+    </div>
+    <div MdDialogContent class="dialog-content" style="display: flex">
+        <h4 style="margin: auto"> <b>Nurlan Zhussupov</b> </h4>
+    </div>
+    <div MdDialogContent class="dialog-content" style="display: flex">
+        <h5 style="margin: auto; text-align: center; font-size: 14px"> zh.nurlan96@gmail.com </h5>
+    </div>
+    <br><br>
+    <h5 style="font-size: 20px"> Followed: </h5>
+    <md-chip-list>
+        <md-chip color="warn" selected="true">FIT KBTU</md-chip>
+        <md-chip color="primary" selected="true">Hackathons</md-chip>
+        <md-chip color="accent" selected="true">ACM</md-chip>
+    </md-chip-list>
+</div>
+<div *ngIf="!username">
+    <h5 MdDialogTitle> More About {{username}} </h5>
+    <md-divider></md-divider>
+    <div MdDialogContent class="dialog-content" style="display: flex">
+        <img style="margin-left: auto; margin-right:auto; display: inline-block;" src="assets/user_defaut.jpg" alt="">
+    </div>
+    <div MdDialogContent class="dialog-content" style="display: flex">
+        <h4 style="margin: auto"> <b>Nurlan Zhussupov</b> </h4>
+    </div>
+    <div MdDialogContent class="dialog-content" style="display: flex">
+        <h5 style="margin: auto; text-align: center; font-size: 14px"> zh.nurlan96@gmail.com </h5>
+    </div>
+    <br><br>
+    <h5 style="font-size: 20px"> Followed: </h5>
+    <md-chip-list>
+        <md-chip color="warn" selected="true">FIT KBTU</md-chip>
+        <md-chip color="primary" selected="true">Hackathons</md-chip>
+        <md-chip color="accent" selected="true">ACM</md-chip>
+    </md-chip-list>
+</div>

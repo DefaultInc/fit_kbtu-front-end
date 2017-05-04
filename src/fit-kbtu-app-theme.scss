@@ -25,6 +25,11 @@ body {
     overflow-y: hidden;
 }
 
+a:focus,
+md-chip:focus {
+    outline: none;
+}
+
 app-fk-navbar {
     margin-bottom: 64px;
 }
