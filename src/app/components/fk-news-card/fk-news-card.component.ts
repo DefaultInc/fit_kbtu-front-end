@@ -1,5 +1,6 @@
 import { Component, ViewChild, Output, OnInit, Type, EventEmitter, HostListener, Renderer2,ElementRef } from '@angular/core';
 import { NguiInfiniteListDirective } from '@ngui/infinite-list';
+import { ActivatedRoute } from '@angular/router';
 
 import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
@@ -15,6 +16,8 @@ export class FkNewsCardComponent implements OnInit {
   posts: Post[];
   user: User;
   curPage: number;
+  tag: number = null;
+
   @ViewChild(NguiInfiniteListDirective)
   private infScrollComponent: NguiInfiniteListDirective;
 
@@ -23,7 +26,9 @@ export class FkNewsCardComponent implements OnInit {
       this.infScrollComponent.scrollListener()
     }
 
-  constructor(private postService: PostService,
+  constructor(
+  private postService: PostService,
+  private route: ActivatedRoute,
   private _renderer: Renderer2,
   private _elementRef: ElementRef) { 
     this.user = JSON.parse(localStorage.getItem('currentUser'))
@@ -67,23 +72,37 @@ export class FkNewsCardComponent implements OnInit {
 
     loadMore(data: any): void {
       if (!data.endOfList && !data.loadingInProgress) {
-          data.loadingInProgress = true
-          this.postService.getPosts(this.curPage).subscribe(
-          postsOnPage => {
-            const posts: Post[] = postsOnPage['results']
-            posts.forEach(post => {
-              post.isLiked = this.postIsLiked(post)
-              post.image = post.image
+          data.loadingInProgress = true;
+          this.tag = this.route.snapshot.data['tag'];
+          var postRequest : any = null;
+          if(this.tag != null){
+            postRequest = this.postService.getPostsByTag(this.curPage, this.tag);
+          }
+          else{
+            postRequest = this.postService.getPosts(this.curPage);
+          }
+          postRequest.subscribe(postsOnPage => {
+              var posts: Post[]
+              if(this.tag != null){
+                posts = postsOnPage['results'].map(element => element['post']);
+              }
+              else{
+                posts = postsOnPage['results'];
+              }
+              posts.forEach(post => {
+              post.isLiked = this.postIsLiked(post);
+              post.image = post.image;
               this.posts.push(post)
             });
             if (!postsOnPage["next"]) {
               data.endOfList = true;
             } else {
-              this.curPage += 1
+              this.curPage += 1;
             }
             data.loadingInProgress = false;
-          })
+            })
+          
         }
-      }
+    }
 
 }

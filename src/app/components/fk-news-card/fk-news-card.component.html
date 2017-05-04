@@ -7,17 +7,16 @@
         </md-card-subtitle>
         <md-card-content> {{ post.short_description }} </md-card-content>
         <md-chip-list>
-            <md-chip color="warn" selected="true">FIT KBTU</md-chip>
-            <md-chip color="primary" selected="true">Hackathons</md-chip>
-            <md-chip color="accent" selected="true">ACM</md-chip>
+            <div class="list" *ngFor="let keyword of post.keywords">
+                <md-chip color="warn" selected="true">{{keyword.tag.name}}</md-chip>
+            </div>
         </md-chip-list>
         <md-card-actions>
             <button (click)="likedPost(post.id)" md-ripple="white" md-button>
-          <md-icon *ngIf="post.isLiked" style="color: red">favorite</md-icon> 
-          <md-icon *ngIf="!post.isLiked">favorite</md-icon> 
-          {{ post.likes.length}}
-
-      </button>
+                <md-icon *ngIf="post.isLiked" style="color: red">favorite</md-icon> 
+                <md-icon *ngIf="!post.isLiked">favorite</md-icon> 
+                {{ post.likes.length}}
+            </button>
             <button md-button>
         <div class="material-icons mdl-badge mdl-badge--overlap" attr.data-badge="{{ post.comments.length }}"><md-icon>comments</md-icon></div></button>
 

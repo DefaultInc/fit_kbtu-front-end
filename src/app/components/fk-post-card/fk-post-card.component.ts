@@ -26,7 +26,7 @@ export class FkPostCardComponent implements OnInit {
   constructor(
     private postService: PostService, 
     private commentService: CommentService, 
-    private route: ActivatedRoute   
+    private route: ActivatedRoute  
   ) { 
     this.user = JSON.parse(localStorage.getItem('currentUser'))
   }

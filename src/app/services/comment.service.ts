@@ -9,7 +9,7 @@ export class CommentService {
     
     private onCreateSubject = new Subject<IComment>();
     public onCreate = this.onCreateSubject.asObservable();
-    private apiURL = "http://fit.kbtu.kz:8000/"
+    private apiURL = "localhost:8000/"
 
     constructor(private http: Http) { }
  

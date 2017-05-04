@@ -10,6 +10,7 @@ const appRoutes: Routes = [
   {path: '', component: FkSidenavComponent, children: [
     { path: 'news/:id', component: FkPostCardComponent },
     { path: 'news', component: FkNewsCardComponent},
+    { path: 'acm', component: FkNewsCardComponent, data: {tag: 3}},
     { path: '**', component: FkNotFoundComponent }
   ] }
 ];
