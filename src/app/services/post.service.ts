@@ -9,8 +9,9 @@ import { Post } from '../models/post';
 
 @Injectable()
 export class PostService {
-  private PostsURL = "http://fit.kbtu.kz:8000/posts/";
-  private likeURL = "http://fit.kbtu.kz:8000/like/";
+  private PostsURL = "http://localhost:8000/posts/";
+  private likeURL = "http://localhost:8000/like/";
+  private tagURL = "http://localhost:8000/posts_by_tag/";
   constructor(private http: Http) {};
 
   getPosts(pageNum: number): Observable<Post[]> {
@@ -24,6 +25,16 @@ export class PostService {
                     .map(this.extractData)
                     .catch(this.handleError);
   }
+
+  getPostsByTag(page: number, tag: number): Observable<Post> {
+    return this.http.get(this.tagURL + tag.toString() + "/" + "?page=" + page.toString())
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  // getPostByTagId(Id: number): Observable<Post> {
+
+  // }
 
   postLiked(id: number) {
     this.http.post(this.likeURL, {"post": id}, this.jwt()).subscribe()

@@ -1,6 +1,7 @@
 import { IComment } from "./comment";
 import { User } from './user';
 import { Like } from './like';
+import { Keyword } from "./keyword";
 
 export class Post {
   id: number;
@@ -13,4 +14,5 @@ export class Post {
   isLiked: boolean;
   likes: Like[];
   image: string;
+  keywords: Keyword[];
 }
