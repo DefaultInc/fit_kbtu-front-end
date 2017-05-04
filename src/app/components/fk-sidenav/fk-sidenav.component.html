@@ -1,34 +1,47 @@
-<div class="wrapper">
-    <md-sidenav-container>
-        <md-sidenav #sidenav mode="side" opened="true">
-            <img src="./../../../assets/fit-logo.jpg" alt="" style="margin: 20px;" width="190" height="190">
-            <md-nav-list>
-                <h3 md-subheader>Information</h3>
-                <md-divider></md-divider>
-                <a routerLink="/news" routerLinkActive="active" md-list-item>
-                    <span>Recent News</span>
-                </a>
-                <md-divider></md-divider>
-                <a md-list-item>
-                    <span>About ThinkIT</span>
-                </a>
-                <md-divider></md-divider>
-                <h3 md-subheader>Sections</h3>
-                <md-divider></md-divider>
-                <a md-list-item>
-                    <span>FIT KBTU</span>
-                </a>
-                <md-divider></md-divider>
-                <a md-list-item>
-                    <span>ACM</span>
-                </a>
-                <md-divider></md-divider>
-                <a md-list-item>
-                    <span>Hackathons</span>
-                </a>
-                <md-divider></md-divider>
-            </md-nav-list>
-        </md-sidenav>
-        <router-outlet></router-outlet>
-    </md-sidenav-container>
-</div>
+<div style="height: 64px;"></div>
+<md-sidenav-container>
+    <md-sidenav #sidenav mode="side" opened="true">
+        <img src="./../../../assets/fit-logo.jpg" alt="" style="margin: 20px;" width="190" height="190">
+        <md-nav-list>
+            <h3 md-subheader>Information</h3>
+            <md-divider></md-divider>
+            <a routerLink="/news" routerLinkActive="active" md-list-item>
+                <span>Recent News</span>
+            </a>
+            <md-divider></md-divider>
+            <a md-list-item>
+                <span>Discussions</span>
+            </a>
+            <md-divider></md-divider>
+            <a md-list-item>
+                <span>About ThinkIT</span>
+            </a>
+            <md-divider></md-divider>
+            <h3 md-subheader>Clubs & Organizations</h3>
+            <md-divider></md-divider>
+            <a md-list-item>
+                <span>ACM</span>
+            </a>
+            <md-divider></md-divider>
+            <a md-list-item>
+                <span>Robotics</span>
+            </a>
+            <md-divider></md-divider>
+            <a md-list-item>
+                <span>National Team Training</span>
+            </a>
+            <md-divider></md-divider>
+            <h3 md-subheader>Events</h3>
+            <md-divider></md-divider>
+            <a md-list-item>
+                <span>Hackathons</span>
+            </a>
+            <md-divider></md-divider>
+            <a md-list-item>
+                <span>Master classes & Workshops</span>
+            </a>
+            <md-divider></md-divider>
+        </md-nav-list>
+    </md-sidenav>
+    <router-outlet></router-outlet>
+</md-sidenav-container>

@@ -22,6 +22,11 @@ md-sidenav-container,
 
 body {
     background-color: #fafafa !important;
+    overflow-y: hidden;
+}
+
+app-fk-navbar {
+    margin-bottom: 64px;
 }
 
 .Wrap {
