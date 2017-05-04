@@ -12,6 +12,8 @@ export class PostService {
   private PostsURL = "http://localhost:8000/posts/";
   private likeURL = "http://localhost:8000/like/";
   private tagURL = "http://localhost:8000/posts_by_tag/";
+  public imageURL = "http://localhost:8000";
+  
   constructor(private http: Http) {};
 
   getPosts(pageNum: number): Observable<Post[]> {
