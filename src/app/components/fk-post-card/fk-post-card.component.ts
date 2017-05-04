@@ -75,12 +75,7 @@ export class FkPostCardComponent implements OnInit {
       this.post.isLiked = true;
     }
   }
-
-<<<<<<< HEAD
-=======
   showPostAuthorProfile() {
     this.sharedService.showUserProfile(this.post.author.username)
   }
-
->>>>>>> c23f00d2acae95a510adc6d654b16c48f7afc383
 }

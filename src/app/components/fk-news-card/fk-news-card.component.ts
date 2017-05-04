@@ -106,9 +106,7 @@ export class FkNewsCardComponent implements OnInit {
           
         }
       }
-  showPostAuthorProfile(post: Post) {
-    this.sharedService.showUserProfile(post.author.username)
-  }
+      showPostAuthorProfile(post: Post) {
+        this.sharedService.showUserProfile(post.author.username)
+      }
     }
-
-}

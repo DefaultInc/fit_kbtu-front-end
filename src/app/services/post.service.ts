@@ -9,14 +9,9 @@ import { Post } from '../models/post';
 
 @Injectable()
 export class PostService {
-<<<<<<< HEAD
-  private PostsURL = "http://fit.kbtu.kz:8000/posts/";
-  private likeURL = "http://fit.kbtu.kz:8000/like/";
-=======
   private PostsURL = "http://localhost:8000/posts/";
   private likeURL = "http://localhost:8000/like/";
   private tagURL = "http://localhost:8000/posts_by_tag/";
->>>>>>> c23f00d2acae95a510adc6d654b16c48f7afc383
   constructor(private http: Http) {};
 
   getPosts(pageNum: number): Observable<Post[]> {

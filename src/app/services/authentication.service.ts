@@ -6,11 +6,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class AuthenticationService {
     public token: string;
-<<<<<<< HEAD
-    private apiURL = "http://fit.kbtu.kz:8000/"
-=======
     private apiURL = "http://localhost:8000/"
->>>>>>> c23f00d2acae95a510adc6d654b16c48f7afc383
 
     constructor(private http: Http) {
         // set token if saved in local storage
