@@ -9,16 +9,17 @@ export class CommentService {
     
     private onCreateSubject = new Subject<IComment>();
     public onCreate = this.onCreateSubject.asObservable();
+    private apiURL = "http://fit.kbtu.kz:8000/"
 
     constructor(private http: Http) { }
  
     create(comment: IComment) {
         console.log("Submitted");
-        const request = this.http.post('http://127.0.0.1:8000/comments/', comment, this.jwt()).map((response: Response) => response.json());
+        const request = this.http.post(this.apiURL + 'comments/', comment, this.jwt()).map((response: Response) => response.json());
         request.subscribe(req => this.onCreateSubject.next(comment));        
         return request;
     }
- 
+/* 
     update(comment: IComment) {
         return this.http.put('http://127.0.0.1:8000/comments/' + comment.id, comment, this.jwt()).map((response: Response) => response.json());
     }
@@ -26,7 +27,7 @@ export class CommentService {
     delete(id: number) {
         return this.http.delete('http://127.0.0.1:8000/comments/' + id, this.jwt()).map((response: Response) => response.json());
     }
- 
+*/
     private jwt() {        
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser && currentUser.token) {
