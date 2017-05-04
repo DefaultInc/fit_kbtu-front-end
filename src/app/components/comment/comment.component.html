@@ -1,6 +1,6 @@
 <div class="head">
     <span class="author">
-        {{comment.author.username || comment.author}}
+        <a style="color: black; text-decoration:none;"href="" onclick="return false;" (click)="showCommentAuthorProfile(comment)">{{comment.author.username}}</a>
     </span>
     <span class="date">
         {{comment.publish_date | date: 'dd/MM/yyyy'}}

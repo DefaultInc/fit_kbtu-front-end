@@ -3,7 +3,7 @@
         <img *ngIf="post.image" md-card-image [src]="post.image">
         <md-card-title> {{ post.title }} </md-card-title>
         <md-card-subtitle>
-            By {{ post.author.username }} | <span>{{ post.publish_date | timeAgo}}</span>
+            By <a href="" onclick="return false;" (click)="showPostAuthorProfile(post)"> {{ post.author.username }} </a> | <span>{{ post.publish_date | timeAgo}}</span>
         </md-card-subtitle>
         <md-card-content> {{ post.short_description }} </md-card-content>
         <md-chip-list>
@@ -11,6 +11,7 @@
                 <md-chip color="warn" selected="true">{{keyword.tag.name}}</md-chip>
             </div>
         </md-chip-list>
+        <md-divider style="margin-top: 16px;"></md-divider>
         <md-card-actions>
             <button (click)="likedPost(post.id)" md-ripple="white" md-button>
                 <md-icon *ngIf="post.isLiked" style="color: red">favorite</md-icon> 

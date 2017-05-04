@@ -4,14 +4,15 @@
         <img *ngIf="post.image" md-card-image [src]="post.image">
         <md-card-title> {{ post.title }} </md-card-title>
         <md-card-subtitle>
-            By {{ post.author.username }} | <span>{{ post.publish_date | timeAgo}}</span>
+            By <a href="" onclick="return false;" (click)="showPostAuthorProfile()">{{ post.author.username }}</a> | <span>{{ post.publish_date | timeAgo}}</span>
         </md-card-subtitle>
         <md-card-content> {{ post.content }} </md-card-content>
         <md-chip-list>
-            <md-chip color="warn" selected="true">Hackathons</md-chip>
+            <md-chip color="warn" selected="true">FIT KBTU</md-chip>
             <md-chip color="primary" selected="true">Hackathons</md-chip>
             <md-chip color="accent" selected="true">ACM</md-chip>
         </md-chip-list>
+        <md-divider style="margin-top: 16px;"></md-divider>
         <md-card-actions>
             <button (click)="likedPost(post.id)" md-ripple="white" md-button>
           <md-icon *ngIf="post.isLiked" style="color: red">favorite</md-icon> 

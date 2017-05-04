@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
+import { SharedService } from '../../services/shared.service';
 import { User } from '../../models/user';
 
 @Component({
@@ -30,7 +31,8 @@ export class FkNewsCardComponent implements OnInit {
   private postService: PostService,
   private route: ActivatedRoute,
   private _renderer: Renderer2,
-  private _elementRef: ElementRef) { 
+  private _elementRef: ElementRef,
+  private sharedService: SharedService) { 
     this.user = JSON.parse(localStorage.getItem('currentUser'))
   }
 
@@ -103,6 +105,10 @@ export class FkNewsCardComponent implements OnInit {
             })
           
         }
+      }
+  showPostAuthorProfile(post: Post) {
+    this.sharedService.showUserProfile(post.author.username)
+  }
     }
 
 }
