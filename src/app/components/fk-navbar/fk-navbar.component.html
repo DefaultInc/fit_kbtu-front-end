@@ -19,17 +19,17 @@
   Hi, {{ username }} <md-icon>keyboard_arrow_down</md-icon>
 </button>
         <md-menu #menu="mdMenu">
-            <button md-menu-item>
+            <button md-menu-item (click)="openUserProfileDialog(username)">
     <md-icon>perm_identity</md-icon>
     <span>My Profile</span>
   </button>
-            <button md-menu-item>
-    <md-icon>settings</md-icon>
+            <button md-menu-item (click)="openUserSettingsDialog()">
+    <md-icon md-list-icon>settings</md-icon>
     <span>Settings</span>
   </button>
             <md-divider></md-divider>
             <button md-menu-item (click)="logout()">
-    <md-icon>exit_to_app</md-icon>
+    <md-icon md-list-icon>exit_to_app</md-icon>
     <span>Sign Out</span>
   </button>
         </md-menu>

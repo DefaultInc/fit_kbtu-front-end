@@ -3,7 +3,8 @@ import { Router, NavigationStart } from '@angular/router';
 
 import { MdDialog } from '@angular/material';
 import { FkLoginComponent } from '../fk-auth/fk-auth.component';
-import { AuthenticationService } from '../../services/authentication.service'
+import { AuthenticationService } from '../../services/authentication.service';
+import { FkUserProfileComponent } from '../fk-user-profile/fk-user-profile.component';
 import { SharedService } from '../../services/shared.service';
 
 @Component({
@@ -46,7 +47,10 @@ export class FkNavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.loggedIn());
+        this.sharedService.showProfile$.subscribe(
+        text => {
+            this.openUserProfileDialog(text)
+        });
   }
 
   openLoginDialog() {
@@ -58,6 +62,18 @@ export class FkNavbarComponent implements OnInit {
   openSignupDialog() {
     this.dialog.open(FkLoginComponent, {
       data: 'signup'
+    });
+  }
+
+  openUserProfileDialog(username: string) {
+    this.dialog.open(FkUserProfileComponent, {
+      data: {isSettings: 0, username: username}
+    });
+  }
+
+  openUserSettingsDialog() {
+    this.dialog.open(FkUserProfileComponent, {
+      data: {isSettings: 1}
     });
   }
 

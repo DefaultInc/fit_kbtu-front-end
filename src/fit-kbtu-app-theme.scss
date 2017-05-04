@@ -22,15 +22,16 @@ md-sidenav-container,
 
 body {
     background-color: #fafafa !important;
-    .mat-dialog-container {
-        padding: 0 !important;
-        .mat-tab-body-wrapper {
-            padding: 7%;
-            .mat-input-container {
-                margin: 2% 2%;
-            }
-        }
-    }
+    overflow-y: hidden;
+}
+
+a:focus,
+md-chip:focus {
+    outline: none;
+}
+
+app-fk-navbar {
+    margin-bottom: 64px;
 }
 
 .Wrap {

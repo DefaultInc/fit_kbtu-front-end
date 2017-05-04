@@ -5,10 +5,16 @@ import { Subject } from 'rxjs/Subject';
 export class SharedService {
     // Observable string sources
     private emitChangeSource = new Subject<any>();
+    private emitShowProfileAction = new Subject<any>();
     // Observable string streams
     sidenavToggled$ = this.emitChangeSource.asObservable();
+    showProfile$ = this.emitShowProfileAction.asObservable();
     // Service message commands
     toggleSidenav() {
         this.emitChangeSource.next();
+    }
+
+    showUserProfile(username: string) {
+        this.emitShowProfileAction.next(username)
     }
 }
