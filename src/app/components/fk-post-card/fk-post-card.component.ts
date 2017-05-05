@@ -1,6 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { slideInDownAnimation } from '../../animations';
+import { Observable } from 'rxjs/Rx';
 
 import { Post } from '../../models/post';
 import { User } from '../../models/user';
@@ -14,37 +15,40 @@ import { SharedService } from "../../services/shared.service";
   selector: 'app-fk-post-card',
   templateUrl: './fk-post-card.component.html',
   styleUrls: ['./fk-post-card.component.scss'],
-  animations: [ slideInDownAnimation ]
+  animations: [slideInDownAnimation]
 
 })
 export class FkPostCardComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
-  @HostBinding('style.position')  position = 'absolute';
-  @HostBinding('style.width')  width = '100%';
+  @HostBinding('style.position') position = 'absolute';
+  @HostBinding('style.width') width = '100%';
 
   public post: Post;
   user: User;
 
   constructor(
-    private postService: PostService, 
-    private commentService: CommentService, 
+    private postService: PostService,
+    private commentService: CommentService,
     private route: ActivatedRoute,
     private sharedService: SharedService
-  ) { 
+  ) {
     this.user = JSON.parse(localStorage.getItem('currentUser'))
   }
 
   getPost(id: number) {
-    this.postService.getPostById(id).subscribe(
-      post => { 
-        this.post = post;
-        this.post.isLiked = this.postIsLiked(this.post);
-        this.post.image = this.postService.imageURL + post.image;
-    });
+    let timer = Observable.timer(2000, 1000);
+    timer.subscribe(t => {
+      this.postService.getPostById(id).subscribe(
+        post => {
+          this.post = post;
+          this.post.isLiked = this.postIsLiked(this.post);
+          this.post.image = this.postService.imageURL + post.image;
+        });
+    })
   }
 
   ngOnInit() {
-    this.commentService.onCreate.subscribe(comment => {      
+    this.commentService.onCreate.subscribe(comment => {
       this.post.comments.push(comment);
     });
     this.route.params.subscribe(params => {
@@ -56,25 +60,25 @@ export class FkPostCardComponent implements OnInit {
 
   postIsLiked(post: Post): boolean {
     if (this.user) {
-      return post.likes.find(like => like.author.username==this.user.username) != undefined
+      return post.likes.find(like => like.author.username == this.user.username) != undefined
     } else {
       return false
     }
   }
 
   likedPost() {
-    var like = this.post.likes.find(like => like.author.username==this.user.username);
+    var like = this.post.likes.find(like => like.author.username == this.user.username);
     if (like) {
       this.postService.postLiked(this.post.id);
-      this.post.likes = this.post.likes.filter(like => like.author.username!=this.user.username);
+      this.post.likes = this.post.likes.filter(like => like.author.username != this.user.username);
       this.post.isLiked = false;
     } else {
       this.postService.postLiked(this.post.id);
-      this.post.likes.push({'author': this.user})
+      this.post.likes.push({ 'author': this.user })
       this.post.isLiked = true;
     }
   }
   showPostAuthorProfile() {
-    this.sharedService.showUserProfile(this.post.author.username)
+    this.sharedService.showUserProfile(this.post.author)
   }
 }

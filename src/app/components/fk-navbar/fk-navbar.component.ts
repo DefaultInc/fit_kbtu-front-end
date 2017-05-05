@@ -6,6 +6,7 @@ import { FkLoginComponent } from '../fk-auth/fk-auth.component';
 import { AuthenticationService } from '../../services/authentication.service';
 import { FkUserProfileComponent } from '../fk-user-profile/fk-user-profile.component';
 import { SharedService } from '../../services/shared.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-fk-navbar',
@@ -48,8 +49,8 @@ export class FkNavbarComponent implements OnInit {
 
   ngOnInit() {
         this.sharedService.showProfile$.subscribe(
-        text => {
-            this.openUserProfileDialog(text)
+        user => {
+            this.openUserProfileDialog(user)
         });
   }
 
@@ -65,15 +66,15 @@ export class FkNavbarComponent implements OnInit {
     });
   }
 
-  openUserProfileDialog(username: string) {
+  openUserProfileDialog(user: User) {
     this.dialog.open(FkUserProfileComponent, {
-      data: {isSettings: 0, username: username}
+      data: {isSettings: 0, user: user}
     });
   }
 
-  openUserSettingsDialog() {
+  openCurrentUserProfile(isSettings: boolean) {
     this.dialog.open(FkUserProfileComponent, {
-      data: {isSettings: 1}
+      data: {isSettings: isSettings}
     });
   }
 

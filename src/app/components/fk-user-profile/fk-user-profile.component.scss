@@ -6,4 +6,17 @@ h5 {
 img {
     width: 128px;
     height: 128px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 12px;
+}
+
+.action_container {
+    float: right;
+    margin-top: 6px;
+}
+
+.dialog-content {
+    display: flex;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IComment } from "../../models/comment";
 import { SharedService } from "../../services/shared.service";
+import { User} from '../../models/user';
 
 @Component({
   selector: 'fp-comment',
@@ -17,7 +18,7 @@ export class CommentComponent implements OnInit {
   }
 
   showCommentAuthorProfile(comment) {
-    this.sharedService.showUserProfile(this.comment.author.username)
+    this.sharedService.showUserProfile(this.comment.author)
   }
 
 }

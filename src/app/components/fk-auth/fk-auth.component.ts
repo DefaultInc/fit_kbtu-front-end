@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { AuthenticationService } from '../../services/authentication.service'
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-fk-login',
