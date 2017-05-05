@@ -3,21 +3,28 @@
         <input mdInput autofocus type="text" placeholder="Title" class="form-control" formControlName="title">
     </md-input-container>
     <div class="pop">
-        <ckeditor (change)="onChange($event)" (ready)="onReady($event)" (focus)="onFocus($event)" (blur)="onBlur($event)" debounce="500" formControlName="shortDescrp">
+        <div class="label">
+            <span>Short Description:</span>
+        </div>
+
+        <ckeditor debounce="500" formControlName="shortDescrp">
         </ckeditor>
     </div>
-
     <div class="pop">
-        <ckeditor (change)="onChange($event)" (ready)="onReady($event)" (focus)="onFocus($event)" (blur)="onBlur($event)" debounce="500" formControlName="content">
+        <div class="label">
+            <span>Content:</span>
+        </div>
+
+        <ckeditor debounce="500" formControlName="content">
         </ckeditor>
     </div>
 
     <div class="buttons">
         <button md-raised-button type="submit" color="primary" *ngIf="currentUser">
-                Comment
+                Create
             </button>
         <button md-raised-button type="submit" color="primary" disabled *ngIf="!currentUser">
-                Please, log in to comment
+                Please, log in to create post
             </button>
     </div>
 </form>

@@ -3,14 +3,23 @@
     flex-direction: column;
     flex: 1 0 auto;
     padding: 3%;
+    justify-content: space-around;
     align-items: stretch;
-    .full {
-        width: 80%;
-    }
-    .pop {
-        margin-top: 1%;
-    }
-    .buttons {
-        margin-top: 1%;
+    form {
+        padding-left: 16%;
+        .full {
+            width: 80%;
+        }
+        .label {
+            font-size: 16px;
+            padding: 10px 0;
+        }
+        .pop {
+            width: 80%;
+            margin-top: 1%;
+        }
+        .buttons {
+            margin-top: 1%;
+        }
     }
 }
