@@ -19,11 +19,11 @@
   Hi, {{ username }} <md-icon>keyboard_arrow_down</md-icon>
 </button>
         <md-menu #menu="mdMenu">
-            <button md-menu-item (click)="openUserProfileDialog(username)">
+            <button md-menu-item (click)="openCurrentUserProfile(false)">
     <md-icon>perm_identity</md-icon>
     <span>My Profile</span>
   </button>
-            <button md-menu-item (click)="openUserSettingsDialog()">
+            <button md-menu-item (click)="openCurrentUserProfile(true)">
     <md-icon md-list-icon>settings</md-icon>
     <span>Settings</span>
   </button>

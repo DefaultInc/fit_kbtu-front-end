@@ -1,40 +1,64 @@
-<div *ngIf="username">
-    <h5 MdDialogTitle> More About {{username}} </h5>
+<div *ngIf="!isSettings">
+    <h5 MdDialogTitle> More About {{user.username}} </h5>
     <md-divider></md-divider>
-    <div MdDialogContent class="dialog-content" style="display: flex">
-        <img style="margin-left: auto; margin-right:auto; display: inline-block;" src="assets/user_defaut.jpg" alt="">
+    <div MdDialogContent class="dialog-content">
+        <img *ngIf="!user.avatar" src="assets/user_defaut.jpg" alt="">
+        <img *ngIf="user.avatar" src="{{avatarURL}}" alt="">
     </div>
-    <div MdDialogContent class="dialog-content" style="display: flex">
-        <h4 style="margin: auto"> <b>Nurlan Zhussupov</b> </h4>
+    <div MdDialogContent class="dialog-content">
+        <h4 style="margin: auto"> <b>{{ fullName ||"Anonymus"}} </b> </h4>
     </div>
-    <div MdDialogContent class="dialog-content" style="display: flex">
-        <h5 style="margin: auto; text-align: center; font-size: 14px"> zh.nurlan96@gmail.com </h5>
+    <div MdDialogContent class="dialog-content">
+        <h5 style="margin: auto; text-align: center; font-size: 14px"> {{ user.show_contact_info ?"Email hidden":user.email}} </h5>
     </div>
     <br><br>
-    <h5 style="font-size: 20px"> Followed: </h5>
+    <h5 style="font-size: 16px"> Followed: </h5>
     <md-chip-list>
         <md-chip color="warn" selected="true">FIT KBTU</md-chip>
         <md-chip color="primary" selected="true">Hackathons</md-chip>
         <md-chip color="accent" selected="true">ACM</md-chip>
     </md-chip-list>
 </div>
-<div *ngIf="!username">
-    <h5 MdDialogTitle> More About {{username}} </h5>
+<div *ngIf="isSettings">
+    <h5 MdDialogTitle> More About {{user.username}} </h5>
     <md-divider></md-divider>
-    <div MdDialogContent class="dialog-content" style="display: flex">
-        <img style="margin-left: auto; margin-right:auto; display: inline-block;" src="assets/user_defaut.jpg" alt="">
-    </div>
-    <div MdDialogContent class="dialog-content" style="display: flex">
-        <h4 style="margin: auto"> <b>Nurlan Zhussupov</b> </h4>
-    </div>
-    <div MdDialogContent class="dialog-content" style="display: flex">
-        <h5 style="margin: auto; text-align: center; font-size: 14px"> zh.nurlan96@gmail.com </h5>
-    </div>
-    <br><br>
-    <h5 style="font-size: 20px"> Followed: </h5>
-    <md-chip-list>
-        <md-chip color="warn" selected="true">FIT KBTU</md-chip>
-        <md-chip color="primary" selected="true">Hackathons</md-chip>
-        <md-chip color="accent" selected="true">ACM</md-chip>
-    </md-chip-list>
+    <form (ngSubmit)="f.form.valid && login()" enctype='multipart/form-data'>
+        <div MdDialogContent class="dialog-content">
+            <img src="{{src?src:(user.avatar?avatarURL:'assets/user_defaut.jpg')}}" alt="">
+        </div>
+        <div MdDialogContent class="dialog-content" style="margin-top: 6px;margin-bottom: 24px">
+            <input style="margin:auto" accept="image/*,image/jpeg" type="file" md-raised-button imageUpload name="avatar" (imageSelected)="imageChanged($event)" [resizeOptions]="resizeOptions">
+        </div>
+        <div MdDialogContent class="dialog-content">
+            <div style="margin: auto">
+                <md-input-container>
+                    <input name="first" [(ngModel)]="user.first_name" placeholder="First name" mdInput value="{{user.first_name}}">
+                </md-input-container>
+            </div>
+            <div style="margin: auto">
+                <md-input-container>
+                    <input name="last" [(ngModel)]="user.last_name" placeholder="Last name" mdInput value="{{user.last_name}}">
+                </md-input-container>
+            </div>
+        </div>
+        <br>
+        <div MdDialogContent class="dialog-content">
+            <div style="margin: auto">
+                <md-checkbox name="showContactInfo" [(ngModel)]="user.show_contact_info" [checked]="checked" style="margin:flex">
+                    Hide contact information
+                </md-checkbox>
+            </div>
+        </div>
+        <br><br>
+        <h5 style="font-size: 16px"> Followed: </h5>
+        <md-chip-list>
+            <md-chip color="warn" selected="tru">FIT KBTU</md-chip>
+            <md-chip color="primary" selected="true">Hackathons</md-chip>
+            <md-chip color="accent" selected="true">ACM</md-chip>
+        </md-chip-list>
+        <md-divider style="margin-top:10px"></md-divider>
+        <div MdDialogActions class="action_container">
+            <button color="accent" md-raised-button [disabled]="loading" (click)="updateUserProfile()"> UPDATE </button>
+        </div>
+    </form>
 </div>
