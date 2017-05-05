@@ -1,0 +1,31 @@
+.news-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    display: flex;
+    align-content: center;
+}
+
+.tag-link {
+    color: white;
+    text-decoration: none;
+}
+
+.content {
+    p {
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+        overflow: hidden;
+    }
+}
+
+@media all and (max-width: 680px) {
+    .news-container {
+        margin-top: 0 !important;
+        padding: 2%;
+        md-card {
+            max-width: 100% !important;
+            margin-left: 0 !important;
+        }
+    }
+}
