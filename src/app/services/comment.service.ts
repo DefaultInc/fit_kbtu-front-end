@@ -9,12 +9,11 @@ export class CommentService {
     
     private onCreateSubject = new Subject<IComment>();
     public onCreate = this.onCreateSubject.asObservable();
-    private apiURL = "localhost:8000/";
+    private apiURL = "http://localhost:8000/";
 
     constructor(private http: Http) { }
  
     create(comment: IComment) {
-        console.log("Submitted");
         const request = this.http.post(this.apiURL + 'comments/', comment, this.jwt()).map((response: Response) => response.json());
         request.subscribe(req => this.onCreateSubject.next(comment));        
         return request;

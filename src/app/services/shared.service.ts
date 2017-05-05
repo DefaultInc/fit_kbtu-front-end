@@ -1,6 +1,8 @@
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { User } from '../models/user';
+
 @Injectable()
 export class SharedService {
     // Observable string sources
@@ -14,7 +16,7 @@ export class SharedService {
         this.emitChangeSource.next();
     }
 
-    showUserProfile(username: string) {
-        this.emitShowProfileAction.next(username)
+    showUserProfile(user: User) {
+        this.emitShowProfileAction.next(user)
     }
 }
