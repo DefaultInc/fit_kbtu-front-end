@@ -36,11 +36,12 @@ export class FkPostCardComponent implements OnInit {
   }
 
   getPost(id: number) {
-    let timer = Observable.timer(2000, 1000);
+    let timer = Observable.timer(0, 3000);
     timer.subscribe(t => {
       this.postService.getPostById(id).subscribe(
         post => {
           this.post = post;
+          console.log(post)
           this.post.isLiked = this.postIsLiked(this.post);
           this.post.image = this.postService.imageURL + post.image;
         });
