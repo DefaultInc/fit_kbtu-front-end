@@ -10,7 +10,7 @@ import { Post } from "../../models/post";
 })
 export class PostFormComponent implements OnInit {
   @Input() postForm:FormGroup;
-  private currentUser;
+  currentUser: any;
   constructor(private fb:FormBuilder, private postService: PostService) {     
   }
 

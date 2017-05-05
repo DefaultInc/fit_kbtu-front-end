@@ -3,12 +3,14 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 
+import { CommonService } from './CommonService'; 
+
 @Injectable()
-export class AuthenticationService {
+export class AuthenticationService extends CommonService {
     public token: string;
-    private apiURL = "http://localhost:8000/"
 
     constructor(private http: Http) {
+        super()
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
