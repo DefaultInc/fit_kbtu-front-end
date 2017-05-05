@@ -9,6 +9,7 @@ import { NguiInfiniteListModule } from '@ngui/infinite-list';
 import { ImageUploadModule } from 'ng2-imageupload';
 
 import { FkNewsCardComponent } from '../components/fk-news-card/fk-news-card.component';
+import { PostFormComponent } from "../components/post-form/post-form.component";
 
 @NgModule({
   imports: [

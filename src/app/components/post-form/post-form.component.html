@@ -1,0 +1,30 @@
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()" novalidate>
+    <md-input-container class="full">
+        <input mdInput autofocus type="text" placeholder="Title" class="form-control" formControlName="title">
+    </md-input-container>
+    <div class="pop">
+        <div class="label">
+            <span>Short Description:</span>
+        </div>
+
+        <ckeditor debounce="500" formControlName="shortDescrp">
+        </ckeditor>
+    </div>
+    <div class="pop">
+        <div class="label">
+            <span>Content:</span>
+        </div>
+
+        <ckeditor debounce="500" formControlName="content">
+        </ckeditor>
+    </div>
+
+    <div class="buttons">
+        <button md-raised-button type="submit" color="primary" *ngIf="currentUser">
+                Create
+            </button>
+        <button md-raised-button type="submit" color="primary" disabled *ngIf="!currentUser">
+                Please, log in to create post
+            </button>
+    </div>
+</form>

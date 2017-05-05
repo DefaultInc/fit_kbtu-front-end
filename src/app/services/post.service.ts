@@ -34,6 +34,10 @@ export class PostService {
                     .catch(this.handleError);
   }
 
+  createPost(post: Post) {
+    this.http.post(this.PostsURL + "create/", post, this.jwt()).subscribe();
+  }
+
   // getPostByTagId(Id: number): Observable<Post> {
 
   // }

@@ -5,10 +5,11 @@
         <md-card-subtitle>
             By <a href="" onclick="return false;" (click)="showPostAuthorProfile(post)"> {{ post.author.username }} </a> | <span>{{ post.publish_date | timeAgo}}</span>
         </md-card-subtitle>
-        <md-card-content> {{ post.short_description }} </md-card-content>
+        <md-card-content [innerHTML]="post.short_description" class="content"></md-card-content>
         <md-chip-list>
             <div class="list" *ngFor="let keyword of post.keywords">
-                <md-chip color="warn" selected="true">{{keyword.tag.name}}</md-chip>
+                <md-chip color="warn" selected="true">
+                    <a class="tag-link" routerLink="/{{keyword.tag.name}}">{{keyword.tag.name}}</a></md-chip>
             </div>
         </md-chip-list>
         <md-divider style="margin-top: 16px;"></md-divider>
