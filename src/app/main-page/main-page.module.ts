@@ -9,6 +9,7 @@ import { NguiInfiniteListModule } from '@ngui/infinite-list';
     
 
 import { FkNewsCardComponent } from '../components/fk-news-card/fk-news-card.component';
+import { PostFormComponent } from "../components/post-form/post-form.component";
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { FkNewsCardComponent } from '../components/fk-news-card/fk-news-card.com
     MaterialModule,
     RouterModule,
     FlexLayoutModule,
-    NguiInfiniteListModule
+    NguiInfiniteListModule,    
   ],
   declarations: [
     MainPageComponent,

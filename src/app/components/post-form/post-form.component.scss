@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    padding: 3%;
+    align-items: stretch;
+    .full {
+        width: 80%;
+    }
+    .pop {
+        margin-top: 1%;
+    }
+    .buttons {
+        margin-top: 1%;
+    }
+}

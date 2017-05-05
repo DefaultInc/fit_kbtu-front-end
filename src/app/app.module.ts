@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +28,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { SharedService } from './services/shared.service';
 import { CommentService } from "./services/comment.service";
 import { SelectorDirective } from "./test/selector.directive";
+import { PostFormComponent } from './components/post-form/post-form.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { SelectorDirective } from "./test/selector.directive";
     CommentComponent,
     CommentFormComponent,
     SelectorDirective,
-    FkUserProfileComponent    
+    FkUserProfileComponent,
+    PostFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,8 +53,9 @@ import { SelectorDirective } from "./test/selector.directive";
     HttpModule,
     AppRoutingModule,
     MainPageModule,
-    ReactiveFormsModule,
-    SidenavRoutingModule,
+    ReactiveFormsModule,           
+    CKEditorModule,
+    SidenavRoutingModule, 
   ],
   entryComponents: [FkLoginComponent, FkUserProfileComponent],
   providers: [UserService, PostService, AuthenticationService, SharedService, CommentService],
