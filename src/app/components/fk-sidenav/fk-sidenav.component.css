@@ -31,7 +31,7 @@ md-icon {
     font: bold;
 }
 
-@media all and (max-width: 680px) {
+@media all and (max-width: 750px) {
     img {
         width: 140px !important;
         height: 140px !important;
