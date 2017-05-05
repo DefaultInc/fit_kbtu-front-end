@@ -1,3 +1,3 @@
 export abstract class CommonService {
-    public apiURL = "http://fit.kbtu.kz"
+    public apiURL = "http://localhost:8000"
 }

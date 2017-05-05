@@ -8,6 +8,8 @@ import { CommonService } from './CommonService';
 @Injectable()
 export class AuthenticationService extends CommonService {
     public token: string;
+    private loginURL = this.apiURL + "/auth/login/"
+    private signupURL = this.apiURL + "/auth/register/"
 
     constructor(private http: Http) {
         super()
@@ -29,7 +31,7 @@ export class AuthenticationService extends CommonService {
     login(username: string, password: string): Observable<boolean> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(this.apiURL + 'auth/login/', JSON.stringify({ username: username, password: password }), options)
+        return this.http.post(this.loginURL, JSON.stringify({ username: username, password: password }), options)
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
@@ -52,7 +54,7 @@ export class AuthenticationService extends CommonService {
     signUp(email: string, password: string): Observable<boolean> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(this.apiURL + 'auth/register/', JSON.stringify({ username: email, password: password }), options)
+        return this.http.post(this.signupURL, JSON.stringify({ username: email, password: password }), options)
             .map((response: Response) => {
                 if (response.status === 201) {
                     return true;
