@@ -30,3 +30,13 @@ md-icon {
     color: rgba(0, 0, 0, 0.54);
     font: bold;
 }
+
+@media all and (max-width: 750px) {
+    img {
+        width: 140px !important;
+        height: 140px !important;
+    }
+    md-sidenav {
+        width: 180px !important;
+    }
+}

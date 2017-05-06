@@ -1,5 +1,5 @@
 .dialog-content {
-    width: 400px;
+    width: 100%;
 }
 
 .full-width {
@@ -25,4 +25,10 @@ md-icon {
     font-size: 25px;
     padding-bottom: 2%;
     margin-right: 16px;
+}
+
+@media all and (max-width: 380px) {
+    .input {
+        justify-content: flex-start !important;
+    }
 }
