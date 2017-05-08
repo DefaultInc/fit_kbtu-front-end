@@ -59,9 +59,7 @@ export class FkUserProfileComponent implements OnInit {
   }
 
   updateUserProfile() {
-    console.log(this.user)
     this.loading = true;
-    this.user.avatar = null
     this.userService.update(this.user).subscribe(data => {
       this.dialogRef.close(); 
     },

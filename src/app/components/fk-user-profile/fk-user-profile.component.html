@@ -1,7 +1,7 @@
 <div *ngIf="!isSettings">
     <h5 MdDialogTitle> More About {{user.username}} </h5>
     <md-divider></md-divider>
-    <div MdDialogContent class="dialog-content">
+    <div MdDialogContent class="dialog-content" style="margin-top: 12px">
         <img *ngIf="!user.avatar" src="assets/user_defaut.jpg" alt="">
         <img *ngIf="user.avatar" src="{{avatarURL}}" alt="">
     </div>
@@ -23,7 +23,7 @@
     <h5 MdDialogTitle> More About {{user.username}} </h5>
     <md-divider></md-divider>
     <form (ngSubmit)="f.form.valid && login()" enctype='multipart/form-data'>
-        <div MdDialogContent class="dialog-content">
+        <div MdDialogContent class="dialog-content" style="margin-top: 12px">
             <img src="{{src?src:(user.avatar?avatarURL:'assets/user_defaut.jpg')}}" alt="">
         </div>
         <div MdDialogContent class="dialog-content" style="margin-top: 6px;margin-bottom: 24px">
@@ -52,7 +52,7 @@
         <br><br>
         <h5 style="font-size: 16px"> Followed: </h5>
         <md-chip-list>
-            <md-chip color="warn" selected="tru">FIT KBTU</md-chip>
+            <md-chip color="warn" selected="tru">FIT KBTU <a>X</a> </md-chip>
             <md-chip color="primary" selected="true">Hackathons</md-chip>
             <md-chip color="accent" selected="true">ACM</md-chip>
         </md-chip-list>
