@@ -3,21 +3,22 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { User } from '../models/user';
+import { CommonService } from './CommonService'; 
 
 @Injectable()
-export class UserService {
+export class UserService extends CommonService {
 
-    private userURL = "http://localhost:8000/auth/user/";
-    public avatarURL = "http://localhost:8000"
+    private userURL = this.apiURL + "/auth/user/";
+    public avatarURL = this.apiURL;
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) { super()}
     
     getCurrentUser() {
         return this.http.get(this.userURL, this.jwt()).map((response: Response) => response.json());
     }
 
     getById(id: number) {
-        return this.http.get(this.userURL + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.get(this.userURL + id + "/", this.jwt()).map((response: Response) => response.json());
     }
 
     update(user: User) {

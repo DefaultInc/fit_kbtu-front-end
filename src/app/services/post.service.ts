@@ -4,17 +4,17 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-
+import { CommonService } from './CommonService'; 
 import { Post } from '../models/post';
 
 @Injectable()
-export class PostService {
-  private PostsURL = "http://localhost:8000/posts/";
-  private likeURL = "http://localhost:8000/like/";
-  private tagURL = "http://localhost:8000/posts_by_tag/";
-  public imageURL = "http://localhost:8000";
+export class PostService extends CommonService {
+  private PostsURL = this.apiURL + "/posts/";
+  private likeURL = this.apiURL + "/like/";
+  private tagURL = this.apiURL + "/posts_by_tag/";
+  public imageURL = this.apiURL
   
-  constructor(private http: Http) {};
+  constructor(private http: Http) {super()};
 
   getPosts(pageNum: number): Observable<Post[]> {
     return this.http.get(this.PostsURL+"?page="+pageNum)

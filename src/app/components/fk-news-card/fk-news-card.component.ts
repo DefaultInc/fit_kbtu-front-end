@@ -10,7 +10,7 @@ import { User } from '../../models/user';
 @Component({
   selector: 'app-fk-news-card',
   templateUrl: './fk-news-card.component.html',
-  styleUrls: ['./fk-news-card.component.css'],
+  styleUrls: ['./fk-news-card.component.scss'],
 })
 export class FkNewsCardComponent implements OnInit {
  

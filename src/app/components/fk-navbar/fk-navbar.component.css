@@ -17,3 +17,9 @@ button-row {
 .toolbar-spacer {
     flex: 1 1 auto;
 }
+
+@media all and (max-width: 380px) {
+    .mat-button {
+        font-size: 14px !important;
+    }
+}

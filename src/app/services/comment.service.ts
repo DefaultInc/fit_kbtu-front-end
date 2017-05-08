@@ -3,18 +3,20 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { IComment } from "../models/comment";
 import { Subject } from 'rxjs/Subject';
+import { CommonService } from './CommonService'; 
 
 @Injectable()
-export class CommentService {
+export class CommentService extends CommonService {
     
     private onCreateSubject = new Subject<IComment>();
     public onCreate = this.onCreateSubject.asObservable();
-    private apiURL = "http://localhost:8000/";
+    
+    private commentURL = this.apiURL + "/comments/"
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) { super() }
  
     create(comment: IComment) {
-        const request = this.http.post(this.apiURL + 'comments/', comment, this.jwt()).map((response: Response) => response.json());
+        const request = this.http.post(this.commentURL, comment, this.jwt()).map((response: Response) => response.json());
         request.subscribe(req => this.onCreateSubject.next(comment));        
         return request;
     }
