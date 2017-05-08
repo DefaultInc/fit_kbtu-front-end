@@ -13,7 +13,6 @@ export class PostFormComponent implements OnInit {
   @Input() postForm:FormGroup;
   currentUser: any;
   postImage: string = null;
-
   constructor(private fb:FormBuilder, private postService: PostService) {     
   }
 
