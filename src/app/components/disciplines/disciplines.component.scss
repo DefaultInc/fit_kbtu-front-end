@@ -1,0 +1,25 @@
+.news-container {
+    height: 100%;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    left: 2%;
+    top: 2%;
+    align-items: flex-start;
+    justify-content: center;
+    .label {
+        font-size: 16px;
+        padding: 10px 0px;
+    }
+    .specialization {
+        display: flex;
+        flex-direction: column;
+    }
+    .courses {
+        display: flex;
+        flex-direction: column;
+    }
+}

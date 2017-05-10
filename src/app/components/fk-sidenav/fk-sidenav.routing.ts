@@ -6,6 +6,7 @@ import { FkPostCardComponent } from '../fk-post-card/fk-post-card.component';
 import { FkNotFoundComponent } from '../fk-not-found/fk-not-found.component';
 import { FkSidenavComponent } from './fk-sidenav.component'
 import { PostFormComponent } from "../post-form/post-form.component";
+import { DisciplinesComponent } from "../disciplines/disciplines.component";
 
 const appRoutes: Routes = [
   {path: '', component: FkSidenavComponent, children: [
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     { path: 'master-classes-workshops', component: FkNewsCardComponent, data: {tag: 7}},   
     { path: 'ThinkIT', component: FkNewsCardComponent, data: {tag: 8}},   
     { path: 'post-create', component: PostFormComponent},
+    { path: 'disciplines', component: DisciplinesComponent},
     { path: '**', component: FkNotFoundComponent }
   ] }
 ];

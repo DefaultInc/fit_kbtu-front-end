@@ -29,6 +29,7 @@ import { SharedService } from './services/shared.service';
 import { CommentService } from "./services/comment.service";
 import { SelectorDirective } from "./test/selector.directive";
 import { PostFormComponent } from './components/post-form/post-form.component';
+import { DisciplinesComponent } from './components/disciplines/disciplines.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { PostFormComponent } from './components/post-form/post-form.component';
     SelectorDirective,
     FkUserProfileComponent,
     PostFormComponent,
+    DisciplinesComponent,
   ],
   imports: [
     BrowserModule,
