@@ -121,6 +121,9 @@ export class DisciplinesComponent implements OnInit {
           
         }
       }
+      onChange(tag:number) {
+        console.log("Here:" + tag);
+      }
       showPostAuthorProfile(post: Post) {
         this.sharedService.showUserProfile(post.author)
       }
