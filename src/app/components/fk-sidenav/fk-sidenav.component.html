@@ -50,6 +50,6 @@
     </md-sidenav>
     <router-outlet></router-outlet>
 </md-sidenav-container>
-<a routerLink="/post-create" class="fab-news" md-fab>
+<a *ngIf="isDiscussion" routerLink="/post-create" class="fab-news" md-fab>
     <md-icon class="createIcon">create</md-icon>
 </a>

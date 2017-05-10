@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MdSidenav } from '@angular/material';
-
+import { NavigationStart, Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 
 @Component({
@@ -11,12 +11,21 @@ import { SharedService } from '../../services/shared.service';
 export class FkSidenavComponent implements OnInit {
 
   @ViewChild('sidenav') sidenav: MdSidenav;
-  
-  constructor(private _sharedService: SharedService) { 
+  isDiscussion: boolean;
+
+  constructor(private _sharedService: SharedService,
+              private router: Router) { 
     _sharedService.sidenavToggled$.subscribe(
         text => {
             this.sidenav.toggle();
         });
+
+       router.events.subscribe(event => { 
+         console.log(event)
+         if (event instanceof NavigationStart) {
+           this.isDiscussion = (event.url == "/discussions")
+         }
+       })
   }
 
   ngOnInit() {
