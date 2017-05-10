@@ -1,10 +1,10 @@
-<div class="news-container">
+<div ngui-infinite-list class="news-container" [enableWindowScroll]="true" [disableScrollListener]="set1.loadingInProgress" (endVisible)="loadMore(set1)">
     <md-card class="filter">
         <label class="label">Choose Specializations:</label>
         <md-radio-group class="specialization">
-            <md-checkbox value="CSS">Computer Science and Software</md-checkbox>
-            <md-checkbox value="IS">Information Systems</md-checkbox>
-            <md-checkbox value="AC">Automation and Control</md-checkbox>
+            <md-checkbox value="CSS" checked>Computer Science and Software</md-checkbox>
+            <md-checkbox value="IS" checked>Information Systems</md-checkbox>
+            <md-checkbox value="AC" checked>Automation and Control</md-checkbox>
         </md-radio-group>
         <label class="label">Choose Course:</label>
         <div class="courses">
@@ -40,4 +40,10 @@
             <a style="float: right" routerLink="/news/{{ post.id }}" md-button color="accent"> READ MORE</a>
         </md-card-actions>
     </md-card>
+    <div ngui-infinite-list-end style="height:75px" fxFlex="100" fxLayoutAlign="center center">
+        <div *ngIf="set1.loadingInProgress">
+            <md-spinner style="width: 50px;height: 50px;" color="accent" [attr.mode]="Indeterminate">
+            </md-spinner>
+        </div>
+    </div>
 </div>

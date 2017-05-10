@@ -12,6 +12,8 @@ export class PostService extends CommonService {
   private PostsURL = this.apiURL + "/posts/";
   private likeURL = this.apiURL + "/like/";
   private tagURL = this.apiURL + "/posts_by_tag/";
+  private tagsURL = this.apiURL + "/tags/";
+  
   public imageURL = this.apiURL
   
   constructor(private http: Http) {super()};
@@ -30,6 +32,12 @@ export class PostService extends CommonService {
 
   getPostsByTag(page: number, tag: number): Observable<Post> {
     return this.http.get(this.tagURL + tag.toString() + "/" + "?page=" + page.toString())
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  getPostsByTags(page: number, tags: number[]): Observable<Post> {
+    return this.http.get(this.tagURL + "/" + "?page=" + page.toString() + "&" + "ids="+tags.toString())
                     .map(this.extractData)
                     .catch(this.handleError);
   }

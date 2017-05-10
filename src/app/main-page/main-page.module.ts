@@ -9,6 +9,8 @@ import { NguiInfiniteListModule } from '@ngui/infinite-list';
 import { ImageUploadModule } from 'ng2-imageupload';
 
 import { FkNewsCardComponent } from '../components/fk-news-card/fk-news-card.component';
+import { DisciplinesComponent } from '../components/disciplines/disciplines.component';
+
 import { PostFormComponent } from "../components/post-form/post-form.component";
 
 @NgModule({
@@ -23,8 +25,9 @@ import { PostFormComponent } from "../components/post-form/post-form.component";
   declarations: [
     MainPageComponent,
     FkNewsCardComponent,
+    DisciplinesComponent,
     TimeAgoPipe
   ],
-  exports: [FkNewsCardComponent, TimeAgoPipe, ImageUploadModule]
+  exports: [FkNewsCardComponent, TimeAgoPipe, ImageUploadModule, DisciplinesComponent]
 })
 export class MainPageModule { }
