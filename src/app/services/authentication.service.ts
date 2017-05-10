@@ -28,10 +28,10 @@ export class AuthenticationService extends CommonService {
         }
     }
 
-    login(username: string, password: string): Observable<boolean> {
+    login(username: string, email: string, password: string): Observable<boolean> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(this.loginURL, JSON.stringify({ username: username, password: password }), options)
+        return this.http.post(this.loginURL, JSON.stringify({ username: username, email: email, password: password }), options)
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
@@ -51,10 +51,10 @@ export class AuthenticationService extends CommonService {
             });
     }
 
-    signUp(email: string, password: string): Observable<boolean> {
+    signUp(username: string, email: string, password: string): Observable<boolean> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(this.signupURL, JSON.stringify({ username: email, password: password }), options)
+        return this.http.post(this.signupURL, JSON.stringify({ username: username, email: email, password: password }), options)
             .map((response: Response) => {
                 if (response.status === 201) {
                     return true;

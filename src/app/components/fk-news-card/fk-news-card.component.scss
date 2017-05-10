@@ -19,6 +19,14 @@
     }
 }
 
+.fab-news {
+    position: fixed !important;
+    top: auto;
+    left: auto;
+    right: 24px;
+    bottom: 124px;
+}
+
 @media all and (max-width: 750px) {
     .news-container {
         margin-top: 0 !important;
