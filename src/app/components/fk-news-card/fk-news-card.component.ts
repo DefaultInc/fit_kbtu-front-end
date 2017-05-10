@@ -18,6 +18,7 @@ export class FkNewsCardComponent implements OnInit {
   user: User;
   curPage: number;
   tag: number = null;
+  isDiscussion: boolean;
   @Input() restricted;
 
   @ViewChild(NguiInfiniteListDirective)
@@ -33,7 +34,7 @@ export class FkNewsCardComponent implements OnInit {
   private route: ActivatedRoute,
   private _renderer: Renderer2,
   private _elementRef: ElementRef,
-  private sharedService: SharedService) { 
+  private sharedService: SharedService) {
     this.user = JSON.parse(localStorage.getItem('currentUser'))
   }
 

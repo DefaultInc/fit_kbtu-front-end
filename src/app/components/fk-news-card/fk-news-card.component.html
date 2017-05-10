@@ -12,7 +12,7 @@
         <md-chip-list>
             <div class="list" *ngFor="let keyword of post.keywords">
                 <md-chip color="warn" selected="true">
-                    <a class="tag-link" routerLink="/{{keyword.tag.name}}">{{keyword.tag.name}}</a></md-chip>
+                    <a class="tag-link" routerLink="/{{keyword.tag.url}}">{{keyword.tag.name}}</a></md-chip>
             </div>
         </md-chip-list>
         <md-divider style="margin-top: 16px;"></md-divider>

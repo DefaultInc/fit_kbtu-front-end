@@ -52,8 +52,9 @@ export class PostFormComponent implements OnInit {
       likes: [],
       publish_date: new Date().toDateString()
     }
-    console.log(post)
+    if (this.postImage == null) {
+      delete post.image;
+    }
     this.postService.createPost(post);
-    console.log(post);
   }
 }

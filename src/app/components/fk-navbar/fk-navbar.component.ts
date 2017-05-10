@@ -30,7 +30,8 @@ export class FkNavbarComponent implements OnInit {
     
     if(event instanceof NavigationStart) {
       this.navigationPath = event.url.split("/").filter(url => url.length > 0);
-      this.navigationPathDisplayString = this.navigationPath.map(url => url.charAt(0).toUpperCase() + url.slice(1));
+      this.navigationPathDisplayString = this.navigationPath.map(url => url.charAt(0).toUpperCase() + url.slice(1).replace(/-/g, ' '));
+      
       if (this.navigationPath.length > 0) {
         this.navigationPath[0] = '/' + this.navigationPath[0];
         for (var i = 1; i < this.navigationPath.length; i++) {
