@@ -2,9 +2,7 @@
     <md-card class="filter">
         <label class="label">Choose Specializations:</label>
         <md-radio-group class="specialization">
-            <md-checkbox value="CSS" checked>Computer Science and Software</md-checkbox>
-            <md-checkbox value="IS" checked>Information Systems</md-checkbox>
-            <md-checkbox value="AC" checked>Automation and Control</md-checkbox>
+            <md-checkbox *ngFor="let spec of specializations" [(ngModel)]="spec.checked">{{spec.name}}</md-checkbox>
         </md-radio-group>
         <label class="label">Choose Course:</label>
         <div class="courses">

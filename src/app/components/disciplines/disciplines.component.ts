@@ -6,6 +6,7 @@ import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
 import { SharedService } from '../../services/shared.service';
 import { User } from '../../models/user';
+
 @Component({
   selector: 'fp-disciplines',
   templateUrl: './disciplines.component.html',
@@ -13,13 +14,22 @@ import { User } from '../../models/user';
 })
 export class DisciplinesComponent implements OnInit {
 
- 
+  specializations = [
+    {name: "Computer Science and Software", tag: 0, checked: true},
+    {name: "Information Systems", tag: 0, checked: true},
+    {name: "Automation and Control", tag: 0, checked: true}
+  ]
+  studyYear = [
+    "First Course",
+    "Second Course",
+    "Third Course",
+    "Fourth Course"
+  ]
+
   posts: Post[];
   user: User;
   curPage: number;
   tag: number = null;
-  isDiscussion: boolean;
-  @Input() restricted;
 
   @ViewChild(NguiInfiniteListDirective)
   private infScrollComponent: NguiInfiniteListDirective;
@@ -74,19 +84,15 @@ export class DisciplinesComponent implements OnInit {
       endOfList: false, loadingInProgress: false
     };
 
+    buildTagArray(): number[] {
+      return []
+    }
+
     loadMore(data: any): void {
-      console.log(this.restricted)
-      if (this.restricted==true && this.curPage > 1) return;
       if (!data.endOfList && !data.loadingInProgress) {
           data.loadingInProgress = true;
-          this.tag = this.route.snapshot.data['tag'];
           var postRequest : any = null;
-          if(this.tag != null){
-            postRequest = this.postService.getPostsByTag(this.curPage, this.tag);
-          }
-          else{
-            postRequest = this.postService.getPosts(this.curPage);
-          }
+          postRequest = this.postService.getPostsByTags(this.curPage, this.buildTagArray());
           postRequest.subscribe(postsOnPage => {
               var posts: Post[]
               if(this.tag != null){
