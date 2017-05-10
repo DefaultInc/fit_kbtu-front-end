@@ -1,5 +1,25 @@
 .news-container {
-    height: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+    display: flex;
+    align-content: center;
+}
+
+.tag-link {
+    color: white;
+    text-decoration: none;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    padding-left: 10%;
+}
+
+.data {
+    max-width: 90%;
 }
 
 .filter {
@@ -21,5 +41,26 @@
     .courses {
         display: flex;
         flex-direction: column;
+    }
+}
+
+.content {
+    p {
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+        overflow: hidden;
+    }
+}
+
+@media all and (max-width: 750px) {
+    .news-container {
+        margin-top: 0 !important;
+        padding: 2%;
+        md-card {
+            max-width: 100% !important;
+            margin-left: 0 !important;
+        }
+        .mat-button {
+            min-width: 0 !important;
+        }
     }
 }

@@ -14,36 +14,38 @@
             <md-radio-button>Fourth Course</md-radio-button>
         </div>
     </md-card>
-    <md-card *ngFor="let post of posts, let i = index" [fxFlexOffset]="i%2 ? 4 : 10" fxFlex="38" style="margin-bottom: 30px">
-        <img *ngIf="post.image" md-card-image [src]="post.image">
-        <md-card-title> {{ post.title }} </md-card-title>
-        <md-card-subtitle>
-            By <a href="" onclick="return false;" (click)="showPostAuthorProfile(post)"> {{ post.author.username }} </a> | <span>{{ post.publish_date | timeAgo}}</span>
-        </md-card-subtitle>
-        <md-card-content [innerHTML]="post.short_description" class="content"></md-card-content>
-        <md-chip-list>
-            <div class="list" *ngFor="let keyword of post.keywords">
-                <md-chip color="warn" selected="true">
-                    <a class="tag-link" routerLink="/{{keyword.tag.name}}">{{keyword.tag.name}}</a></md-chip>
-            </div>
-        </md-chip-list>
-        <md-divider style="margin-top: 16px;"></md-divider>
-        <md-card-actions>
-            <button (click)="likedPost(post.id)" md-ripple="white" md-button>
+    <div class="information">
+        <md-card *ngFor="let post of posts, let i = index" fxFlex="38" style="margin-bottom: 30px" class="data">
+            <img *ngIf="post.image" md-card-image [src]="post.image">
+            <md-card-title> {{ post.title }} </md-card-title>
+            <md-card-subtitle>
+                By <a href="" onclick="return false;" (click)="showPostAuthorProfile(post)"> {{ post.author.username }} </a> | <span>{{ post.publish_date | timeAgo}}</span>
+            </md-card-subtitle>
+            <md-card-content [innerHTML]="post.short_description" class="content"></md-card-content>
+            <md-chip-list>
+                <div class="list" *ngFor="let keyword of post.keywords">
+                    <md-chip color="warn" selected="true">
+                        <a class="tag-link" routerLink="/{{keyword.tag.name}}">{{keyword.tag.name}}</a></md-chip>
+                </div>
+            </md-chip-list>
+            <md-divider style="margin-top: 16px;"></md-divider>
+            <md-card-actions>
+                <button (click)="likedPost(post.id)" md-ripple="white" md-button>
                 <md-icon *ngIf="post.isLiked" style="color: red">favorite</md-icon> 
                 <md-icon *ngIf="!post.isLiked">favorite</md-icon> 
                 {{ post.likes.length}}
             </button>
-            <button md-button>
+                <button md-button>
         <div class="material-icons mdl-badge mdl-badge--overlap" attr.data-badge="{{ post.comments.length }}"><md-icon>comments</md-icon></div></button>
 
-            <a style="float: right" routerLink="/news/{{ post.id }}" md-button color="accent"> READ MORE</a>
-        </md-card-actions>
-    </md-card>
-    <div ngui-infinite-list-end style="height:75px" fxFlex="100" fxLayoutAlign="center center">
-        <div *ngIf="set1.loadingInProgress">
-            <md-spinner style="width: 50px;height: 50px;" color="accent" [attr.mode]="Indeterminate">
-            </md-spinner>
+                <a style="float: right" routerLink="/news/{{ post.id }}" md-button color="accent"> READ MORE</a>
+            </md-card-actions>
+        </md-card>
+        <div ngui-infinite-list-end style="height:75px" fxFlex="100" fxLayoutAlign="center center">
+            <div *ngIf="set1.loadingInProgress">
+                <md-spinner style="width: 50px;height: 50px;" color="accent" [attr.mode]="Indeterminate">
+                </md-spinner>
+            </div>
         </div>
     </div>
 </div>
