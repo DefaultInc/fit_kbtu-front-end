@@ -4,6 +4,10 @@ md-toolbar {
     position: fixed;
 }
 
+.mat-button {
+    height: 100%;
+}
+
 button-row {
     display: flex;
     align-items: center;

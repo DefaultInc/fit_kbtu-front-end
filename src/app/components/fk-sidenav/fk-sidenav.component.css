@@ -31,6 +31,21 @@ md-icon {
     font: bold;
 }
 
+.createIcon {
+    color: #fff;
+}
+
+.fab-news {
+    display: flex;
+    position: fixed !important;
+    top: auto;
+    left: auto;
+    right: 3%;
+    bottom: 6%;
+    align-items: center;
+    justify-content: center;
+}
+
 @media all and (max-width: 750px) {
     img {
         width: 140px !important;
