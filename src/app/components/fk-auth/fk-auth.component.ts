@@ -45,7 +45,7 @@ export class FkLoginComponent implements OnInit {
   
   login() {
         this.loading = true;
-        this.authenticationService.login(this.model.username, this.model.password)
+        this.authenticationService.login(this.model.username, this.model.email, this.model.password)
             .subscribe(
                 data => {
                     this.closeDialog();
@@ -58,10 +58,9 @@ export class FkLoginComponent implements OnInit {
 
 signUp() {
     if (this.signupForm.status == "INVALID") return;
-      let model = this.signupForm.value
-      console.log(model)
+      this.model = this.signupForm.value
       this.loading = true;
-      this.authenticationService.signUp(model.username, model.password)
+      this.authenticationService.signUp(this.model.username, this.model.email, this.model.password)
           .subscribe(
               data => {
                 this.login();
