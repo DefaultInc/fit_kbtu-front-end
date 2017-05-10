@@ -14,9 +14,10 @@
     <br><br>
     <h5 style="font-size: 16px"> Followed: </h5>
     <md-chip-list>
-        <md-chip color="warn" selected="true">FIT KBTU</md-chip>
-        <md-chip color="primary" selected="true">Hackathons</md-chip>
-        <md-chip color="accent" selected="true">ACM</md-chip>
+        <div class="list" *ngFor="let tag of user.tags">
+            <md-chip color="warn" selected="true">
+                <a class="tag-link" routerLink="/{{tag.name}}">{{tag.name}}</a></md-chip>
+        </div>
     </md-chip-list>
 </div>
 <div *ngIf="isSettings">
