@@ -1,6 +1,3 @@
-<a *ngIf="isDiscussion" routerLink="/post-create" class="fab-news" md-fab>
-    <md-icon>check</md-icon>
-</a>
 <div ngui-infinite-list class="news-container" [enableWindowScroll]="true" [disableScrollListener]="set1.loadingInProgress" (endVisible)="loadMore(set1)">
     <md-card *ngFor="let post of posts, let i = index" [fxFlexOffset]="i%2 ? 4 : 10" fxFlex="38" style="margin-bottom: 30px">
         <img *ngIf="post.image" md-card-image [src]="post.image">

@@ -1,6 +1,6 @@
 <form [formGroup]="postForm" (ngSubmit)="onSubmit()" novalidate>
 
-    <input class="form-control" formControlName="image" accept="image/*,image/jpeg" type="file" imageUpload (imageSelected)="imageChanged($event)">
+    <input class="full form-control" formControlName="image" accept="image/*,image/jpeg" type="file" imageUpload (imageSelected)="imageChanged($event)">
 
     <md-input-container class="full">
         <input mdInput autofocus type="text" placeholder="Title" class="form-control" formControlName="title">

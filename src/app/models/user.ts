@@ -1,4 +1,6 @@
 
+import { Tag } from "./tag";
+
 export class User {
     id: number;
     username:string;
@@ -7,4 +9,5 @@ export class User {
     first_name: string;
     last_name: string;
     avatar: ImageData|string;
+    tags: Tag[];
 }

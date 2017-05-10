@@ -61,7 +61,7 @@ export class FkUserProfileComponent implements OnInit {
     this.loading = true;
     if (this.avatarURL) delete this.user.avatar;
     this.userService.update(this.user).subscribe(data => {
-      this.dialogRef.close(); 
+      this.dialogRef.close();
     },
     error => {
       this.loading = false;
