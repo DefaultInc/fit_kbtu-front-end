@@ -1,5 +1,7 @@
 <form [formGroup]="postForm" (ngSubmit)="onSubmit()" novalidate>
-
+    <div class="label">
+        Image:
+    </div>
     <input class="full form-control" formControlName="image" accept="image/*,image/jpeg" type="file" imageUpload (imageSelected)="imageChanged($event)">
 
     <md-input-container class="full">
