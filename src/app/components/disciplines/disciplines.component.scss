@@ -1,8 +1,9 @@
 .news-container {
     margin-top: 30px;
     margin-bottom: 30px;
-    align-items: flex-start;
+    align-items: center;
     display: flex;
+    flex-direction: column;
     align-content: center;
 }
 
@@ -14,33 +15,36 @@
 .information {
     display: flex;
     flex-direction: column;
-    max-width: 80%;
-    padding-left: 10%;
+    margin-top: 2%;
+    max-width: 100%;
 }
 
 .data {
-    max-width: 90%;
+    max-width: 100%;
 }
 
 .filter {
     display: flex;
-    flex-direction: column;
-    width: 15%;
-    left: 2%;
-    top: 2%;
+    width: 75%;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-around;
+    .specs-group {
+        display: flex;
+        .specialization {
+            display: flex;
+            flex-direction: column;
+        }
+    }
     .label {
         font-size: 16px;
-        padding: 10px 0px;
+        padding: 0px 10px;
     }
-    .specialization {
+    .course-group {
         display: flex;
-        flex-direction: column;
-    }
-    .courses {
-        display: flex;
-        flex-direction: column;
+        .courses {
+            display: flex;
+            flex-direction: column;
+        }
     }
 }
 

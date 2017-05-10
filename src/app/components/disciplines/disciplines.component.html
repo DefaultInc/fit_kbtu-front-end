@@ -1,19 +1,25 @@
 <div ngui-infinite-list class="news-container" [enableWindowScroll]="true" [disableScrollListener]="set1.loadingInProgress" (endVisible)="loadMore(set1)">
     <md-card class="filter">
-        <label class="label">Choose Specializations:</label>
-        <md-radio-group class="specialization">
-            <md-checkbox *ngFor="let spec of specializations" [(ngModel)]="spec.checked">{{spec.name}}</md-checkbox>
-        </md-radio-group>
-        <label class="label">Choose Course:</label>
-        <div class="courses">
-            <md-radio-button>First Course</md-radio-button>
-            <md-radio-button>Second Course</md-radio-button>
-            <md-radio-button>Third Course</md-radio-button>
-            <md-radio-button>Fourth Course</md-radio-button>
+
+        <div class="specs-group">
+            <label class="label">Choose Specializations:</label>
+            <div class="specialization">
+                <md-checkbox *ngFor="let spec of specializations" [(ngModel)]="spec.checked">{{spec.name}}</md-checkbox>
+            </div>
         </div>
+        <div class="course-group">
+            <label class="label">Choose Course:</label>
+            <md-radio-group class="courses">
+                <md-radio-button value="FC">First Course</md-radio-button>
+                <md-radio-button value="SC">Second Course</md-radio-button>
+                <md-radio-button value="TC">Third Course</md-radio-button>
+                <md-radio-button value="FoC">Fourth Course</md-radio-button>
+            </md-radio-group>
+        </div>
+
     </md-card>
     <div class="information">
-        <md-card *ngFor="let post of posts, let i = index" fxFlex="38" style="margin-bottom: 30px" class="data">
+        <md-card *ngFor="let post of posts" fxFlex="38" style="margin-bottom: 30px" class="data">
             <img *ngIf="post.image" md-card-image [src]="post.image">
             <md-card-title> {{ post.title }} </md-card-title>
             <md-card-subtitle>
