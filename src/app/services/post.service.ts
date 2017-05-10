@@ -37,7 +37,8 @@ export class PostService extends CommonService {
   }
 
   getPostsByTags(page: number, tags: number[]): Observable<Post> {
-    return this.http.get(this.tagURL + "/" + "?page=" + page.toString() + "&" + "ids="+tags.toString())
+    console.log(tags)
+    return this.http.get(this.tagsURL + "?page=" + page.toString() + "&" + "ids="+tags.toString())
                     .map(this.extractData)
                     .catch(this.handleError);
   }

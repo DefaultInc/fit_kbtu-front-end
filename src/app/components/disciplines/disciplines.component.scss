@@ -4,7 +4,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    align-content: center;
+    justify-content: center;
 }
 
 .tag-link {
@@ -13,19 +13,16 @@
 }
 
 .information {
-    display: flex;
-    flex-direction: column;
     margin-top: 2%;
-    max-width: 100%;
-}
-
-.data {
-    max-width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    height: 100%;
+    width: 100%;
 }
 
 .filter {
     display: flex;
-    width: 75%;
+    width: 75.8%;
     align-items: flex-start;
     justify-content: space-around;
     .specs-group {

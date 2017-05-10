@@ -9,17 +9,14 @@
         </div>
         <div class="course-group">
             <label class="label">Choose Course:</label>
-            <md-radio-group class="courses">
-                <md-radio-button value="FC">First Course</md-radio-button>
-                <md-radio-button value="SC">Second Course</md-radio-button>
-                <md-radio-button value="TC">Third Course</md-radio-button>
-                <md-radio-button value="FoC">Fourth Course</md-radio-button>
-            </md-radio-group>
+            <div selected class="courses">
+                <md-radio-button *ngFor="let year of studyYears" [(checked)]=year.checked [value]=year.tag>{{ year.name }}</md-radio-button>
+            </div>
         </div>
 
     </md-card>
     <div class="information">
-        <md-card *ngFor="let post of posts" fxFlex="38" style="margin-bottom: 30px" class="data">
+        <md-card *ngFor="let post of posts, let i = index" [fxFlexOffset]="i%2 ? 4 : 10" fxFlex="38" style="margin-bottom: 30px">
             <img *ngIf="post.image" md-card-image [src]="post.image">
             <md-card-title> {{ post.title }} </md-card-title>
             <md-card-subtitle>
@@ -35,12 +32,12 @@
             <md-divider style="margin-top: 16px;"></md-divider>
             <md-card-actions>
                 <button (click)="likedPost(post.id)" md-ripple="white" md-button>
-                <md-icon *ngIf="post.isLiked" style="color: red">favorite</md-icon> 
+                <md-icon *ngIf="post.isLiked"style="color: red">favorite</md-icon> 
                 <md-icon *ngIf="!post.isLiked">favorite</md-icon> 
                 {{ post.likes.length}}
             </button>
                 <button md-button>
-        <div class="material-icons mdl-badge mdl-badge--overlap" attr.data-badge="{{ post.comments.length }}"><md-icon>comments</md-icon></div></button>
+        <div class="material-icons mdl-badge mdl-badge--overlap"attr.data-badge="{{ post.comments.length }}"><md-icon>comments</md-icon></div></button>
 
                 <a style="float: right" routerLink="/news/{{ post.id }}" md-button color="accent"> READ MORE</a>
             </md-card-actions>

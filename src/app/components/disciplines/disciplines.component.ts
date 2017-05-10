@@ -15,18 +15,19 @@ import { User } from '../../models/user';
 export class DisciplinesComponent implements OnInit {
 
   specializations = [
-    {name: "Computer Science and Software", tag: 0, checked: true},
-    {name: "Information Systems", tag: 0, checked: true},
-    {name: "Automation and Control", tag: 0, checked: true}
+    {name: "Computer Science and Software", tag: 10, checked: true},
+    {name: "Information Systems", tag: 11, checked: true},
+    {name: "Automation and Control", tag: 12, checked: true}
   ]
-  studyYear = [
-    "First Course",
-    "Second Course",
-    "Third Course",
-    "Fourth Course"
+  studyYears = [
+    {name: "First Course", tag: 13, checked: true},
+    {name: "Second Course", tag: 14, checked: false},
+    {name: "Third Course", tag: 15, checked: false},
+    {name: "Fourth Course", tag: 16, checked: false},
   ]
+  yearTag: number;
 
-  posts: Post[];
+  posts: Post[] = [];
   user: User;
   curPage: number;
   tag: number = null;
@@ -85,7 +86,16 @@ export class DisciplinesComponent implements OnInit {
     };
 
     buildTagArray(): number[] {
-      return []
+      let res = [9]
+      this.studyYears
+          .filter(spec => spec.checked)
+          .forEach(spec => res.push(spec.tag))
+      
+      this.specializations
+          .filter(spec => spec.checked)
+          .forEach(spec => res.push(spec.tag))
+      
+      return res
     }
 
     loadMore(data: any): void {
@@ -95,12 +105,7 @@ export class DisciplinesComponent implements OnInit {
           postRequest = this.postService.getPostsByTags(this.curPage, this.buildTagArray());
           postRequest.subscribe(postsOnPage => {
               var posts: Post[]
-              if(this.tag != null){
-                posts = postsOnPage['results'].map(element => element['post']);
-              }
-              else{
-                posts = postsOnPage['results'];
-              }
+              posts = postsOnPage['results'].map(element => element['post']);
               posts.forEach(post => {
               post.isLiked = this.postIsLiked(post);
               post.image = post.image;
