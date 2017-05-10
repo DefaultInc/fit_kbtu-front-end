@@ -54,13 +54,12 @@ export class FkUserProfileComponent implements OnInit {
           && imageResult.resized.dataURL
           || imageResult.dataURL;
       this.user.avatar = this.src;
-      console.log(imageResult.dataURL)
-      
+      this.avatarURL = null;      
   }
 
   updateUserProfile() {
-    console.log(this.user)
     this.loading = true;
+    if (this.avatarURL) delete this.user.avatar;
     this.userService.update(this.user).subscribe(data => {
       this.dialogRef.close(); 
     },

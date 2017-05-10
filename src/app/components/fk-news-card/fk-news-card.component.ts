@@ -1,4 +1,4 @@
-import { Component, ViewChild, Output, OnInit, Type, EventEmitter, HostListener, Renderer2,ElementRef } from '@angular/core';
+import { Component, ViewChild, Output, OnInit, Type, EventEmitter, HostListener, Renderer2,ElementRef, Input } from '@angular/core';
 import { NguiInfiniteListDirective } from '@ngui/infinite-list';
 import { ActivatedRoute } from '@angular/router';
 
@@ -18,6 +18,7 @@ export class FkNewsCardComponent implements OnInit {
   user: User;
   curPage: number;
   tag: number = null;
+  @Input() restricted;
 
   @ViewChild(NguiInfiniteListDirective)
   private infScrollComponent: NguiInfiniteListDirective;
@@ -73,6 +74,8 @@ export class FkNewsCardComponent implements OnInit {
     };
 
     loadMore(data: any): void {
+      console.log(this.restricted)
+      if (this.restricted==true && this.curPage > 1) return;
       if (!data.endOfList && !data.loadingInProgress) {
           data.loadingInProgress = true;
           this.tag = this.route.snapshot.data['tag'];

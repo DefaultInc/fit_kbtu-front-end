@@ -6,7 +6,7 @@
         <md-card-subtitle>
             By <a href="" onclick="return false;" (click)="showPostAuthorProfile()">{{ post.author.username }}</a> | <span>{{ post.publish_date | timeAgo}}</span>
         </md-card-subtitle>
-        <md-card-content> {{ post.content }} </md-card-content>
+        <md-card-content [innerHTML]="post.content"> </md-card-content>
         <md-chip-list>
             <div class="list" *ngFor="let keyword of post.keywords">
                 <md-chip color="warn" selected="true">

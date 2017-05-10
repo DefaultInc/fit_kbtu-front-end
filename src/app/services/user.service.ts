@@ -18,7 +18,7 @@ export class UserService extends CommonService {
     }
 
     getById(id: number) {
-        return this.http.get(this.userURL + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.get(this.userURL + id + "/", this.jwt()).map((response: Response) => response.json());
     }
 
     update(user: User) {
