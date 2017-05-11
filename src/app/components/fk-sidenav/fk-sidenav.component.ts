@@ -20,8 +20,7 @@ export class FkSidenavComponent implements OnInit {
             this.sidenav.toggle();
         });
 
-       router.events.subscribe(event => { 
-         console.log(event)
+       router.events.subscribe(event => {
          if (event instanceof NavigationStart) {
            this.isDiscussion = (event.url == "/discussions")
          }

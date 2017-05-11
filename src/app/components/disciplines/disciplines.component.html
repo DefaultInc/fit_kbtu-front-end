@@ -9,9 +9,9 @@
         </div>
         <div class="course-group">
             <label class="label">Choose Course:</label>
-            <div selected class="courses">
-                <md-radio-button *ngFor="let year of studyYears" [(checked)]=year.checked (change)="onChange(year.tag)" [value]=year.tag>{{ year.name }}</md-radio-button>
-            </div>
+            <md-radio-group selected class="courses" [(ngModel)]="yearTag" (change)="onChange(yearTag)">
+                <md-radio-button *ngFor="let year of studyYears" [(checked)]=year.checked [value]=year.tag>{{ year.name }}</md-radio-button>
+            </md-radio-group>
         </div>
 
     </md-card>
