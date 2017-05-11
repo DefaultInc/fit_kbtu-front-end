@@ -25,7 +25,7 @@ export class DisciplinesComponent implements OnInit {
     {name: "Third Course", tag: 15, checked: false},
     {name: "Fourth Course", tag: 16, checked: false},
   ]
-  yearTag: number;
+  yearTag: number = 13;
 
   posts: Post[] = [];
   user: User;
@@ -86,10 +86,7 @@ export class DisciplinesComponent implements OnInit {
     };
 
     buildTagArray(): number[] {
-      let res = [9]
-      this.studyYears
-          .filter(spec => spec.checked)
-          .forEach(spec => res.push(spec.tag))
+      let res = [this.yearTag];
       
       this.specializations
           .filter(spec => spec.checked)
@@ -99,7 +96,7 @@ export class DisciplinesComponent implements OnInit {
     }
 
     loadMore(data: any): void {
-      if (!data.endOfList && !data.loadingInProgress) {
+        if (!data.endOfList && !data.loadingInProgress) {        
           data.loadingInProgress = true;
           var postRequest : any = null;
           postRequest = this.postService.getPostsByTags(this.curPage, this.buildTagArray());
@@ -121,8 +118,12 @@ export class DisciplinesComponent implements OnInit {
           
         }
       }
-      onChange(tag:number) {
-        console.log("Here:" + tag);
+      onChange(tag:number) {        
+        this.posts = [];
+        this.curPage = 1;
+        this.set1.loadingInProgress = false;
+        this.set1.endOfList = false;        
+        this.loadMore(this.set1);
       }
       showPostAuthorProfile(post: Post) {
         this.sharedService.showUserProfile(post.author)
