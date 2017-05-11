@@ -19,6 +19,8 @@ export class FkNewsCardComponent implements OnInit {
   curPage: number;
   tag: number = null;
   isDiscussion: boolean;
+  destURL: string = "news";
+
   @Input() restricted;
 
   @ViewChild(NguiInfiniteListDirective)
@@ -35,6 +37,15 @@ export class FkNewsCardComponent implements OnInit {
   private _renderer: Renderer2,
   private _elementRef: ElementRef,
   private sharedService: SharedService) {
+    this.tag = this.route.snapshot.data['tag'];
+    if (this.tag) {
+      this.postService.getTagInfo(this.tag).subscribe(
+        tag => {
+          console.log(tag)
+          this.destURL = tag.url;
+        }
+      )
+    }
     this.user = JSON.parse(localStorage.getItem('currentUser'))
   }
 
@@ -79,7 +90,6 @@ export class FkNewsCardComponent implements OnInit {
       if (this.restricted==true && this.curPage > 1) return;
       if (!data.endOfList && !data.loadingInProgress) {
           data.loadingInProgress = true;
-          this.tag = this.route.snapshot.data['tag'];
           var postRequest : any = null;
           if(this.tag != null){
             postRequest = this.postService.getPostsByTag(this.curPage, this.tag);

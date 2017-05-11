@@ -11,6 +11,17 @@ import { DisciplinesComponent } from "../disciplines/disciplines.component";
 const appRoutes: Routes = [
   {path: '', component: FkSidenavComponent, children: [
     { path: 'news/:id', component: FkPostCardComponent },
+    { path: 'acm/:id', component: FkPostCardComponent },
+    { path: 'acm/:id', component: FkPostCardComponent },
+    { path: 'about/:id', component: FkPostCardComponent },
+    { path: 'discussions/:id', component: FkPostCardComponent },
+    { path: 'robotics/:id', component: FkPostCardComponent },
+    { path: 'olymp/:id', component: FkPostCardComponent },
+    { path: 'hackathons/:id', component: FkPostCardComponent },
+    { path: 'master-classes-workshops/:id', component: FkPostCardComponent },
+    { path: 'ThinkIT/:id', component: FkPostCardComponent },
+    { path: 'disciplines/:id', component: FkPostCardComponent },
+    
     { path: 'news', component: FkNewsCardComponent},
     { path: 'acm', component: FkNewsCardComponent, data: {tag: 3}},
     { path: 'about', component: FkNewsCardComponent, data: {tag: 2}},

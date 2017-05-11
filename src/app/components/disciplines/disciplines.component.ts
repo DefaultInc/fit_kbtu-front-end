@@ -31,6 +31,7 @@ export class DisciplinesComponent implements OnInit {
   user: User;
   curPage: number;
   tag: number = null;
+  destURL: string = "disciplines";
 
   @ViewChild(NguiInfiniteListDirective)
   private infScrollComponent: NguiInfiniteListDirective;

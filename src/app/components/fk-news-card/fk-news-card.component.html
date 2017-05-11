@@ -22,7 +22,7 @@
             <button md-button>
         <div class="material-icons mdl-badge mdl-badge--overlap" attr.data-badge="{{ post.comments.length }}"><md-icon>comments</md-icon></div></button>
 
-            <a style="float: right" routerLink="/news/{{ post.id }}" md-button color="accent"> READ MORE</a>
+            <a style="float: right" routerLink="/{{destURL}}/{{ post.id }}" md-button color="accent"> READ MORE</a>
         </md-card-actions>
     </md-card>
     <div ngui-infinite-list-end style="height:75px" fxFlex="100" fxLayoutAlign="center center">
